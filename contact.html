@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Nome Sobrenome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    form { display: flex; flex-direction: column; gap: 2rem; max-width: 600px; margin-top: 4rem; }
+    input, textarea { 
+      background: transparent; border: none; border-bottom: 2px solid var(--border-color);
+      padding: 1rem 0; font-family: inherit; font-size: 1.5rem; outline: none; border-radius: 0;
+      color: var(--text-color);
+    }
+    input:focus, textarea:focus { border-color: var(--accent-color); }
+    button[type="submit"] {
+      background: var(--text-color); color: var(--bg-color); border: none;
+      padding: 1.5rem; font-size: 1.5rem; font-weight: 800; text-transform: uppercase;
+      cursor: none; transition: background 0.3s;
+    }
+    button[type="submit"]:hover { background: var(--accent-color); }
+  </style>
+</head>
+<body>
+  <header style="mix-blend-mode: difference; color: #fff;">
+    <nav class="nav-container">
+      <div class="logo"><a href="index.html">NOME SOBRENOME</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projetos</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="contact.html" class="active">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-wrapper p-2" style="padding-top: 10rem;">
+    <h1 class="h1-brutal">Fale<br>Comigo</h1>
+    
+    <!-- TROQUE O SEU ENDPOINT DO FORMSPREE ABAIXO -->
+    <form action="https://formspree.io/f/seu-endpoint-aqui" method="POST">
+      <input type="text" name="name" placeholder="Seu Nome" required>
+      <input type="email" name="email" placeholder="Seu Email" required>
+      <textarea name="message" rows="3" placeholder="Sua Mensagem" required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </main>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

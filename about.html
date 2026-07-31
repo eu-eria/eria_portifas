@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre | Nome Sobrenome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .timeline-item { border-bottom: 1px solid var(--border-color); padding: 2rem 0; display: grid; grid-template-columns: 1fr 3fr; }
+    .timeline-year { font-weight: 800; font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <header style="mix-blend-mode: difference; color: #fff;">
+    <nav class="nav-container">
+      <div class="logo"><a href="index.html">NOME SOBRENOME</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projetos</a></li>
+        <li><a href="about.html" class="active">Sobre</a></li>
+        <li><a href="contact.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-wrapper p-2">
+    <section style="padding: 10rem 0 4rem 0; border: none;">
+      <h1 class="h2-brutal">Sou um designer focado em função. Elimino o supérfluo para revelar a essência do produto, da marca e da interação.</h1>
+    </section>
+
+    <section style="margin-top: 4rem; border: none;">
+      <h2 style="text-transform: uppercase; margin-bottom: 2rem;">Trajetória</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2023 - Pres.</div>
+          <div>
+            <h3 style="font-size: 1.5rem; text-transform: uppercase;">Senior Product Designer</h3>
+            <p class="text-body">Tech Studio Global. Liderando iniciativas de design system e arquitetura de informação.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2020 - 2023</div>
+          <div>
+            <h3 style="font-size: 1.5rem; text-transform: uppercase;">Designer Gráfico e Embalagem</h3>
+            <p class="text-body">Agência Criativa Local. Desenvolvimento de identidades visuais e projetos físicos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

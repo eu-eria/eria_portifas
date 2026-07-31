@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos | Nome Sobrenome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <header>
+    <nav class="nav-container">
+      <div class="logo"><a href="index.html">NOME SOBRENOME</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projetos</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="contact.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-wrapper">
+    <section class="hero" style="min-height: 40vh; padding-top: 8rem;">
+      <h1 class="h1-brutal">
+        <div class="reveal-text"><span>Arquivo</span></div>
+      </h1>
+    </section>
+
+    <!-- BARRA DE FILTROS -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+      <button class="filter-btn" data-filter="embalagem">Embalagem</button>
+      <button class="filter-btn" data-filter="produto">Produto</button>
+    </div>
+
+    <!-- GRID DE PROJETOS -->
+    <section class="projects-grid grid-3">
+      <!-- Repita as tags a.project-card conforme necessário. Lembre de ajustar o data-category -->
+      <a href="project-template.html" class="project-card" data-category="ui-ux">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Capa" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Fintech App</span><span class="project-category">UI/UX</span>
+        </div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="embalagem">
+        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Café Torra</span><span class="project-category">Embalagem</span>
+        </div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="produto">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Luminária X</span><span class="project-category">Produto</span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
+    <span>© 2026</span>
+  </footer>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/navigation.js"></script>
+</body>
+</html>
