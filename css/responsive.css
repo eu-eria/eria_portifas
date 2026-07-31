@@ -1,0 +1,53 @@
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 .project-card:nth-child(3n) { border-right: 1px solid var(--border-color); }
+  .grid-3 .project-card:nth-child(2n) { border-right: none; }
+
+  .bento { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-3 .project-card { border-right: none; }
+
+  .bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 300px;
+  }
+  .b-2x2, .b-2x1, .b-1x2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .bento .project-card { border-right: none; }
+
+  /* Pilhas de tags mais compactas nos cantos */
+  header { padding: 0.75rem; }
+  .tag { font-size: 0.55rem; letter-spacing: 0.06em; }
+  .tag-map svg { width: 26px; height: 26px; }
+
+  .hero {
+    padding-top: 12rem;
+    min-height: auto;
+  }
+  .hero-title-row { gap: 1.25rem; }
+  .ps1-runner { width: 120px; }
+  .ps1-stage { padding-bottom: 0; }
+
+  .about-blurb { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+  .marquee-group { gap: 1.5rem; padding-right: 1.5rem; }
+
+  footer {
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .footer-egg { text-align: center; }
+
+  .filter-bar { flex-wrap: wrap; }
+}
+
+@media (max-width: 420px) {
+  .tag { font-size: 0.5rem; }
+}
