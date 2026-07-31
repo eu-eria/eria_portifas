@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sobre Éria Alencar: designer multidisciplinar com experiência em produto, UI/UX, ID e design visual — e apaixonada por embalagens.">
+  <title>Sobre | Éria Alencar</title>
+  <meta name="theme-color" content="#f4f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .timeline-item { border-bottom: 1px solid var(--border-color); padding: 2rem 0; display: grid; grid-template-columns: 1fr 3fr; }
+    .timeline-year { font-weight: 800; font-size: 1.5rem; }
+    @media (max-width: 768px) { .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Canto superior esquerdo: identidade em pilha de tags -->
+    <div class="id-stack">
+      <a href="index.html" class="tag">Éria Alencar</a>
+      <span class="tag">Designer Multidisciplinar</span>
+      <span class="tag">Baseada em Goiás&nbsp;|&nbsp;BR</span>
+      <span class="tag tag-map" role="img" aria-label="Mapa de Goiás">
+        <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M20 18 L34 22 L40 14 L52 18 L60 6 L70 10 L74 20 L66 28 L76 34 L80 46 L72 54 L78 64 L70 72 L60 78 L54 88 L44 82 L38 90 L28 84 L20 74 L26 62 L14 50 L22 38 L16 28 Z M58 38 L70 38 L70 46 L58 46 Z"/>
+        </svg>
+      </span>
+    </div>
+
+    <!-- Canto superior direito: navegação em pilha de tags -->
+    <nav class="nav-stack" aria-label="Navegação principal">
+      <a href="index.html" class="tag">Home</a>
+      <a href="projects.html" class="tag">Projetos</a>
+      <a href="about.html" class="tag active">Sobre</a>
+      <a href="contact.html" class="tag">Contato</a>
+      <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
+        <svg class="icon-moon" width="10" height="14" viewBox="0 0 5 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="0" width="3" height="1"/><rect x="1" y="1" width="3" height="1"/><rect x="0" y="2" width="3" height="1"/><rect x="0" y="3" width="3" height="1"/><rect x="0" y="4" width="3" height="1"/><rect x="1" y="5" width="3" height="1"/><rect x="2" y="6" width="3" height="1"/>
+        </svg>
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 7 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="2" width="3" height="3"/><rect x="3" y="0" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="main-wrapper p-2">
+    <section style="padding: 10rem 0 4rem 0; border: none;">
+      <p class="mono-label" style="margin-bottom: 1.5rem;"><span class="blink">▸</span> QUEM ESTÁ JOGANDO</p>
+      <h1 class="h2-brutal">Faço design focado em função — em produto, UI/UX, ID e design visual. Elimino o supérfluo para revelar a essência. E sim: sou apaixonada por embalagens.</h1>
+    </section>
+
+    <section style="margin-top: 4rem; border: none;">
+      <h2 style="text-transform: uppercase; margin-bottom: 2rem;">Trajetória</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2023 - Pres.</div>
+          <div>
+            <h3 style="font-size: 1.5rem; text-transform: uppercase;">Senior Product Designer</h3>
+            <p class="text-body">Tech Studio Global. Liderando iniciativas de design system e arquitetura de informação.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2020 - 2023</div>
+          <div>
+            <h3 style="font-size: 1.5rem; text-transform: uppercase;">Designer Gráfico e Embalagem</h3>
+            <p class="text-body">Agência Criativa Local. Desenvolvimento de identidades visuais, embalagens e projetos físicos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
+    <span class="footer-egg">© 2026 · INSERT COFFEE TO CONTINUE</span>
+  </footer>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
