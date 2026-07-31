@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estudo de caso do portfólio de Éria Alencar.">
+  <title>Nome do Projeto | Éria Alencar</title>
+  <meta name="theme-color" content="#f4f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    /* Estilos específicos da página de projeto */
+    .project-header { padding-top: 10rem; }
+    .project-meta { border-bottom: 1px solid var(--border-color); padding: 2rem; }
+    .project-meta ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .project-meta span.meta-label {
+      display: block; font-family: var(--font-mono); font-size: 0.55rem;
+      text-transform: uppercase; margin-bottom: 0.6rem; color: var(--accent-color);
+    }
+    .project-content { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; border: none; }
+    .project-full-img { width: 100%; height: auto; border: 1px solid var(--border-color); margin-bottom: 2rem; display: block; }
+    @media (max-width: 768px) { .project-meta ul { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Canto superior esquerdo: identidade em pilha de tags -->
+    <div class="id-stack">
+      <a href="index.html" class="tag">Éria Alencar</a>
+      <span class="tag">Designer Multidisciplinar</span>
+      <span class="tag">Baseada em Goiás&nbsp;|&nbsp;BR</span>
+      <span class="tag tag-map" role="img" aria-label="Mapa de Goiás">
+        <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M20 18 L34 22 L40 14 L52 18 L60 6 L70 10 L74 20 L66 28 L76 34 L80 46 L72 54 L78 64 L70 72 L60 78 L54 88 L44 82 L38 90 L28 84 L20 74 L26 62 L14 50 L22 38 L16 28 Z M58 38 L70 38 L70 46 L58 46 Z"/>
+        </svg>
+      </span>
+    </div>
+
+    <!-- Canto superior direito: navegação em pilha de tags -->
+    <nav class="nav-stack" aria-label="Navegação principal">
+      <a href="index.html" class="tag">Home</a>
+      <a href="projects.html" class="tag active">Projetos</a>
+      <a href="about.html" class="tag">Sobre</a>
+      <a href="contact.html" class="tag">Contato</a>
+      <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
+        <svg class="icon-moon" width="10" height="14" viewBox="0 0 5 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="0" width="3" height="1"/><rect x="1" y="1" width="3" height="1"/><rect x="0" y="2" width="3" height="1"/><rect x="0" y="3" width="3" height="1"/><rect x="0" y="4" width="3" height="1"/><rect x="1" y="5" width="3" height="1"/><rect x="2" y="6" width="3" height="1"/>
+        </svg>
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 7 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="2" width="3" height="3"/><rect x="3" y="0" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="main-wrapper">
+    <section class="project-header p-2" style="border: none;">
+      <p class="mono-label" style="margin-bottom: 1.5rem;"><span class="blink">▸</span> STAGE 01</p>
+      <h1 class="h2-brutal" style="margin-bottom: 2rem;">Fintech App Redesign</h1>
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1600&auto=format&fit=crop" alt="Hero do projeto" class="project-full-img">
+    </section>
+
+    <section class="project-meta">
+      <ul>
+        <li><span class="meta-label">Cliente</span> Banco Digital</li>
+        <li><span class="meta-label">Escopo</span> UI/UX, Pesquisa</li>
+        <li><span class="meta-label">Ano</span> 2025</li>
+        <li><span class="meta-label">Link</span> <a href="#" style="text-decoration: underline;">Ver Ao Vivo</a></li>
+      </ul>
+    </section>
+
+    <section class="project-content text-body">
+      <div class="grid-2" style="gap: 4rem;">
+        <div>
+          <h3 style="text-transform: uppercase; margin-bottom: 1rem;">O Desafio</h3>
+          <p>Redesenhar a interface do aplicativo principal com foco em acessibilidade e conversão, removendo atritos do processo de abertura de conta.</p>
+        </div>
+        <div>
+          <h3 style="text-transform: uppercase; margin-bottom: 1rem;">A Solução</h3>
+          <p>Uma interface brutalista e direta ao ponto, utilizando tipografia de alto contraste para guiar a jornada do usuário sem distrações.</p>
+        </div>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=1600&auto=format&fit=crop" alt="Tela do app" class="project-full-img" style="margin-top: 4rem;">
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
+    <span class="footer-egg">© 2026 · INSERT COFFEE TO CONTINUE</span>
+  </footer>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
