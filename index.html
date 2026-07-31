@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nome Sobrenome | Designer Multidisciplinar</title>
-  
+  <title>Éria Alencar | Designer Multidisciplinar</title>
+  <meta name="description" content="Portfólio de Éria Alencar, designer multidisciplinar em Goiás — produto, UI/UX, ID, design visual e embalagens.">
+  <meta name="theme-color" content="#f4f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+
+  <!-- Resolve o tema antes da pintura (evita flash de cor errada) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
@@ -17,41 +31,130 @@
 </head>
 <body>
   <header>
-    <nav class="nav-container">
-      <div class="logo"><a href="index.html">NOME SOBRENOME</a></div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="projects.html">Projetos</a></li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="contact.html">Contato</a></li>
-      </ul>
+    <!-- Canto superior esquerdo: identidade em pilha de tags -->
+    <div class="id-stack">
+      <a href="index.html" class="tag">Éria Alencar</a>
+      <span class="tag">Designer Multidisciplinar</span>
+      <span class="tag">Baseada em Goiás&nbsp;|&nbsp;BR</span>
+      <span class="tag tag-map" role="img" aria-label="Mapa de Goiás">
+        <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M20 18 L34 22 L40 14 L52 18 L60 6 L70 10 L74 20 L66 28 L76 34 L80 46 L72 54 L78 64 L70 72 L60 78 L54 88 L44 82 L38 90 L28 84 L20 74 L26 62 L14 50 L22 38 L16 28 Z M58 38 L70 38 L70 46 L58 46 Z"/>
+        </svg>
+      </span>
+    </div>
+
+    <!-- Canto superior direito: navegação em pilha de tags -->
+    <nav class="nav-stack" aria-label="Navegação principal">
+      <a href="index.html" class="tag active">Home</a>
+      <a href="projects.html" class="tag">Projetos</a>
+      <a href="about.html" class="tag">Sobre</a>
+      <a href="contact.html" class="tag">Contato</a>
+      <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
+        <svg class="icon-moon" width="10" height="14" viewBox="0 0 5 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="0" width="3" height="1"/><rect x="1" y="1" width="3" height="1"/><rect x="0" y="2" width="3" height="1"/><rect x="0" y="3" width="3" height="1"/><rect x="0" y="4" width="3" height="1"/><rect x="1" y="5" width="3" height="1"/><rect x="2" y="6" width="3" height="1"/>
+        </svg>
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 7 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
+          <rect x="2" y="2" width="3" height="3"/><rect x="3" y="0" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/>
+        </svg>
+      </button>
     </nav>
   </header>
 
   <main class="main-wrapper">
-    <!-- TROQUE O TEXTO DO HERO AQUI -->
+    <!-- DOBRA 1 — HERO -->
     <section class="hero">
-      <h1 class="h1-brutal">
-        <div class="reveal-text"><span>Design</span></div>
-        <div class="reveal-text"><span>Multidisciplinar</span></div>
-        <div class="reveal-text"><span>Sem Enfeites.</span></div>
-      </h1>
+      <div class="hero-title-row">
+        <h1 class="h1-brutal">
+          <div class="reveal-text"><span>Éria</span></div>
+          <div class="reveal-text"><span>Alencar</span></div>
+        </h1>
+
+        <!-- Personagem low-poly (estética PS1) correndo em loop -->
+        <div class="ps1-stage">
+          <svg class="ps1-runner" viewBox="0 0 160 190" aria-hidden="true" focusable="false">
+            <!-- sombra no chão -->
+            <polygon class="ps1-shadow" points="50,174 112,174 104,181 56,181" fill="currentColor"/>
+            <!-- linhas de velocidade -->
+            <g>
+              <rect class="zoom-line c2" x="16" y="62" width="22" height="3"/>
+              <rect class="zoom-line c2" x="6" y="90" width="28" height="3"/>
+              <rect class="zoom-line c2" x="22" y="118" width="18" height="3"/>
+            </g>
+            <g class="ps1-lean">
+              <g class="ps1-rig">
+                <!-- braço de trás -->
+                <g class="arm-far">
+                  <polygon class="c2" points="75,49 86,53 80,81 70,77"/>
+                  <g class="fore-far">
+                    <polygon class="c2" points="70,75 80,83 102,77 98,67"/>
+                    <polygon class="c2" points="98,67 108,71 100,81"/>
+                  </g>
+                </g>
+                <!-- perna de trás -->
+                <g class="leg-far">
+                  <polygon class="c2" points="65,94 81,98 77,134 65,132"/>
+                  <g class="shin-far">
+                    <polygon class="c2" points="65,130 77,134 75,166 67,164"/>
+                    <polygon class="c2" points="67,164 75,158 93,168 69,174"/>
+                  </g>
+                </g>
+                <!-- tronco + cabeça (facetas com flat shading) -->
+                <g class="ps1-torso">
+                  <polygon class="c2" points="72,58 90,50 76,100"/>
+                  <polygon class="c1" points="90,50 96,62 76,100"/>
+                  <polygon class="c3" points="96,62 90,102 76,100"/>
+                  <polygon class="c2" points="72,96 92,100 84,112 68,106"/>
+                  <polygon class="c2" points="88,48 96,46 94,58 86,56"/>
+                  <g class="ps1-noggin">
+                    <polygon class="c2" points="84,26 94,22 94,44 82,42"/>
+                    <polygon class="c1" points="94,22 110,30 94,44"/>
+                    <polygon class="c3" points="110,30 112,40 102,46 94,44"/>
+                    <polygon class="c2" points="97,31 107,33 99,38"/>
+                  </g>
+                </g>
+                <!-- perna da frente -->
+                <g class="leg-near">
+                  <polygon class="c1" points="74,96 90,100 86,136 74,134"/>
+                  <g class="shin-near">
+                    <polygon class="c3" points="74,132 86,136 84,168 76,166"/>
+                    <polygon class="c1" points="76,166 84,160 102,170 78,176"/>
+                  </g>
+                </g>
+                <!-- braço da frente -->
+                <g class="arm-near">
+                  <polygon class="c1" points="85,52 96,56 90,84 80,80"/>
+                  <g class="fore-near">
+                    <polygon class="c3" points="80,78 90,86 112,80 108,70"/>
+                    <polygon class="c1" points="108,70 118,74 110,84"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+          <span class="ps1-caption">eria_run.anim ▸ loop ∞</span>
+        </div>
+      </div>
+
+      <!-- TROQUE A FRASE DO HERO AQUI -->
+      <p class="hero-sub text-body">Designer multidisciplinar. Crio produtos, interfaces e ótimas desculpas para colecionar embalagens.<span class="blink">▮</span></p>
+      <a href="#projetos" class="btn-go" data-scroll-to>LET'S GO ▼</a>
     </section>
 
-    <section class="projects-grid grid-3">
-      <!-- PROJETO 1 -->
-      <a href="project-template.html" class="project-card" data-category="ui-ux">
+    <!-- DOBRA 2 — BENTO DE PROJETOS -->
+    <section class="bento" id="projetos">
+      <!-- PROJETO DESTAQUE (2x2) -->
+      <a href="project-template.html" class="project-card b-2x2" data-category="ui-ux">
         <!-- TROQUE O SRC DA IMAGEM ABAIXO -->
-        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto" class="project-image">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
         <div class="project-info">
           <span class="project-title">Fintech App</span>
           <span class="project-category">UI/UX</span>
         </div>
       </a>
-      
-      <!-- PROJETO 2 -->
-      <a href="project-template.html" class="project-card" data-category="embalagem">
-        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto" class="project-image">
+
+      <!-- PROJETO 2 (2x1) -->
+      <a href="project-template.html" class="project-card b-2x1" data-category="embalagem">
+        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
         <div class="project-info">
           <span class="project-title">Café Torra</span>
           <span class="project-category">Embalagem</span>
@@ -60,18 +163,110 @@
 
       <!-- PROJETO 3 -->
       <a href="project-template.html" class="project-card" data-category="produto">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto" class="project-image">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
         <div class="project-info">
           <span class="project-title">Luminária X</span>
           <span class="project-category">Produto</span>
         </div>
       </a>
+
+      <!-- PROJETO 4 -->
+      <a href="project-template.html" class="project-card" data-category="digital">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Pixel Quest" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Pixel Quest</span>
+          <span class="project-category">Digital</span>
+        </div>
+      </a>
+
+      <!-- PROJETO 5 -->
+      <a href="project-template.html" class="project-card" data-category="branding">
+        <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Nébula</span>
+          <span class="project-category">Branding</span>
+        </div>
+      </a>
+
+      <!-- PROJETO 6 (2x1) -->
+      <a href="project-template.html" class="project-card b-2x1" data-category="digital">
+        <img src="https://picsum.photos/seed/eria-zine/1200/700" alt="Capa do projeto Zine Ruído" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Zine Ruído</span>
+          <span class="project-category">Digital</span>
+        </div>
+      </a>
+
+      <!-- PROJETO 7 -->
+      <a href="project-template.html" class="project-card" data-category="ui-ux">
+        <img src="https://picsum.photos/seed/eria-feira/800/1000" alt="Capa do projeto Feira Viva" class="project-image">
+        <div class="project-info">
+          <span class="project-title">Feira Viva</span>
+          <span class="project-category">UI/UX</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- DOBRA 3 — FAIXA DE ÁREAS DE ATUAÇÃO -->
+    <section class="marquee" aria-label="Áreas de atuação">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>UI/UX</span><span class="star">★</span>
+          <span>Produto</span><span class="star">★</span>
+          <span>ID</span><span class="star">★</span>
+          <span>Design Visual</span><span class="star">★</span>
+          <span>Embalagem</span><span class="star">★</span>
+          <span>Branding</span><span class="star">★</span>
+          <span>Motion</span><span class="star">★</span>
+          <span>Web</span><span class="star">★</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>UI/UX</span><span class="star">★</span>
+          <span>Produto</span><span class="star">★</span>
+          <span>ID</span><span class="star">★</span>
+          <span>Design Visual</span><span class="star">★</span>
+          <span>Embalagem</span><span class="star">★</span>
+          <span>Branding</span><span class="star">★</span>
+          <span>Motion</span><span class="star">★</span>
+          <span>Web</span><span class="star">★</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOBRA 4 — BREVE SOBRE MIM -->
+    <section class="about-blurb" id="sobre">
+      <p class="mono-label"><span class="blink">▸</span> SOBRE MIM</p>
+      <h2 class="h2-brutal">Designer multidisciplinar com XP em produto, UI/UX, ID e design visual.</h2>
+      <p class="text-body">Transito entre o digital e o físico — do fluxo de onboarding ao molde da caixa — e tenho uma paixão declarada por embalagens.</p>
+      <a href="about.html" class="btn-go">CONHEÇA O PLAYER ▸</a>
+    </section>
+
+    <!-- DOBRA 5 — FAIXA FINAL (antes do rodapé) -->
+    <section class="marquee marquee-alt" aria-label="Disponível para projetos">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>Vamos trabalhar juntos?</span><span class="star">★</span>
+          <span>Aberta a projetos</span><span class="star">★</span>
+          <span>Let's go</span><span class="star">★</span>
+          <span>Vamos trabalhar juntos?</span><span class="star">★</span>
+          <span>Aberta a projetos</span><span class="star">★</span>
+          <span>Let's go</span><span class="star">★</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>Vamos trabalhar juntos?</span><span class="star">★</span>
+          <span>Aberta a projetos</span><span class="star">★</span>
+          <span>Let's go</span><span class="star">★</span>
+          <span>Vamos trabalhar juntos?</span><span class="star">★</span>
+          <span>Aberta a projetos</span><span class="star">★</span>
+          <span>Let's go</span><span class="star">★</span>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
     <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
-    <span>© 2026</span>
+    <span class="footer-egg">© 2026 · INSERT COFFEE TO CONTINUE</span>
   </footer>
 
   <!-- Scripts -->
