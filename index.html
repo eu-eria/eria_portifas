@@ -46,14 +46,15 @@
       <a href="index.html" class="tag active">Home</a>
       <a href="projects.html" class="tag">Projetos</a>
       <a href="about.html" class="tag">Sobre</a>
-      <a href="contact.html" class="tag">Contato</a>
       <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z"/>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 5h4"/><path d="M20 3v4"/>
+          <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
         </svg>
-        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+          <path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
         </svg>
       </button>
     </nav>
@@ -73,9 +74,15 @@
     </section>
 
     <!-- DOBRA 2 — BENTO DE PROJETOS -->
+    <div class="bento-intro">
+      <p class="eyebrow">Trabalhos selecionados</p>
+      <p class="bento-count">Nº 07</p>
+    </div>
     <section class="bento" id="projetos">
       <a href="project-template.html" class="project-card b-2x2" data-category="ui-ux">
+        <span class="card-index">01</span>
         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Fintech App</span>
           <span class="project-category">UI/UX</span>
@@ -83,7 +90,9 @@
       </a>
 
       <a href="project-template.html" class="project-card b-2x1" data-category="embalagem">
+        <span class="card-index">02</span>
         <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Café Torra</span>
           <span class="project-category">Embalagem</span>
@@ -91,7 +100,9 @@
       </a>
 
       <a href="project-template.html" class="project-card" data-category="produto">
+        <span class="card-index">03</span>
         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Luminária X</span>
           <span class="project-category">Produto</span>
@@ -99,7 +110,9 @@
       </a>
 
       <a href="project-template.html" class="project-card" data-category="digital">
+        <span class="card-index">04</span>
         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Aurora App</span>
           <span class="project-category">Digital</span>
@@ -107,7 +120,9 @@
       </a>
 
       <a href="project-template.html" class="project-card" data-category="branding">
+        <span class="card-index">05</span>
         <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Nébula</span>
           <span class="project-category">Branding</span>
@@ -115,7 +130,9 @@
       </a>
 
       <a href="project-template.html" class="project-card b-2x1" data-category="digital">
+        <span class="card-index">06</span>
         <img src="https://picsum.photos/seed/eria-zine/1200/700" alt="Capa do projeto Zine Ruído" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Zine Ruído</span>
           <span class="project-category">Digital</span>
@@ -123,7 +140,9 @@
       </a>
 
       <a href="project-template.html" class="project-card" data-category="ui-ux">
+        <span class="card-index">07</span>
         <img src="https://picsum.photos/seed/eria-feira/800/1000" alt="Capa do projeto Feira Viva" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Feira Viva</span>
           <span class="project-category">UI/UX</span>
@@ -141,7 +160,6 @@
           <span>Design Visual</span><span class="sep">/</span>
           <span>Embalagem</span><span class="sep">/</span>
           <span>Branding</span><span class="sep">/</span>
-          <span>Motion</span><span class="sep">/</span>
           <span>Web</span><span class="sep">/</span>
         </div>
         <div class="marquee-group" aria-hidden="true">
@@ -151,7 +169,6 @@
           <span>Design Visual</span><span class="sep">/</span>
           <span>Embalagem</span><span class="sep">/</span>
           <span>Branding</span><span class="sep">/</span>
-          <span>Motion</span><span class="sep">/</span>
           <span>Web</span><span class="sep">/</span>
         </div>
       </div>
@@ -192,6 +209,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cursor.js"></script>
   <script src="js/animations.js"></script>
 </body>
 </html>

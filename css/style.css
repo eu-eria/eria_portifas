@@ -211,6 +211,20 @@ section { border-bottom: 1px solid var(--border-color); }
 /* ============================================
    DOBRA 2 — BENTO DE PROJETOS
    ============================================ */
+.bento-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2.5rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.bento-count {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--accent-color);
+}
+
 .bento {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -228,6 +242,46 @@ section { border-bottom: 1px solid var(--border-color); }
 .b-2x2 { grid-column: span 2; grid-row: span 2; }
 .b-2x1 { grid-column: span 2; }
 .b-1x2 { grid-row: span 2; }
+
+.card-index {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 3;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.card-reveal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--accent-color);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card-reveal .arrow {
+  transition: transform 0.3s ease;
+}
+.project-card:hover .card-reveal { transform: translateY(0); }
+.project-card:hover .card-reveal .arrow { transform: translateX(4px); }
 
 /* CARDS DE PROJETO */
 .project-card {
@@ -385,3 +439,89 @@ footer a:hover { color: var(--accent-color); }
    ============================================ */
 .p-2 { padding: 2rem; }
 .border-b { border-bottom: 1px solid var(--border-color); }
+
+/* ============================================
+   CURSOR CONTEXTUAL
+   Só ativa (via JS) em dispositivos com mouse de precisão.
+   O ponto acompanha o mouse 1:1, sem interpolação — zero atraso.
+   Só o tamanho/conteúdo do anel anima ao trocar de contexto.
+   ============================================ */
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor input,
+html.has-custom-cursor textarea {
+  cursor: none;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+html.has-custom-cursor .cursor-dot,
+html.has-custom-cursor .cursor-ring {
+  display: block;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ffffff;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              opacity 0.2s ease;
+}
+
+.cursor-ring-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  mix-blend-mode: normal;
+}
+
+/* Sobre links/botões: anel cresce um pouco */
+.cursor-ring.cursor--link {
+  width: 52px;
+  height: 52px;
+}
+
+/* Sobre cards de projeto: vira um selo sólido "Ver" */
+.cursor-ring.cursor--project {
+  width: 88px;
+  height: 88px;
+  background: #ffffff;
+  border-color: transparent;
+  mix-blend-mode: normal;
+}
+.cursor-ring.cursor--project .cursor-ring-text { opacity: 1; }
+
+/* Sobre o switch de tema: anel fica sutilmente menor (indica ação rápida) */
+.cursor-ring.cursor--toggle {
+  width: 26px;
+  height: 26px;
+}
