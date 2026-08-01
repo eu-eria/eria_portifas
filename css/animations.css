@@ -1,36 +1,17 @@
-/* HOVER DOS CARDS DE PROJETO — zoom suave + inversão de cor */
-.project-card:hover .project-image {
-  transform: scale(1.06);
-}
-.project-card:hover {
-  background-color: var(--text-color);
-  color: var(--bg-color);
-}
-.project-card:hover .project-info {
-  border-top-color: var(--bg-color);
-}
-.project-card:hover .project-category {
-  border-color: var(--bg-color);
-  color: var(--bg-color);
-}
-
 /* ANIMAÇÃO DE TEXTO GSAP (oculta inicial) */
-.reveal-text {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-.reveal-text span {
-  display: block;
-  transform: translateY(110%);
-}
+.reveal-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+.reveal-text span { display: block; transform: translateY(110%); }
 
 /* FAIXA / MARQUEE */
-@keyframes marquee-scroll {
-  to { transform: translateX(-50%); }
-}
+@keyframes marquee-scroll { to { transform: translateX(-50%); } }
+
+/* SELO GIRATÓRIO DO HERO */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
 
 /* ACESSIBILIDADE: respeita quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
   .reveal-text span { transform: none; }
   .project-image { transition: none; }
+  .spin-badge svg { animation: none; }
 }

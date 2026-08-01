@@ -1,63 +1,61 @@
-// Cursor contextual — só ativa em dispositivos com mouse de precisão
-// (evita quebrar em touch/tablet, onde não existe "hover" de verdade).
+// Cursor customizado — só ativa em dispositivos com mouse de precisão.
 (function () {
   const supportsFinePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!supportsFinePointer) return;
 
   document.documentElement.classList.add('has-custom-cursor');
 
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  const ringText = document.createElement('span');
-  ringText.className = 'cursor-ring-text';
-  ring.appendChild(ringText);
+  const cursor = document.createElement('div');
+  cursor.className = 'cursor';
+  const label = document.createElement('span');
+  label.className = 'cursor-label';
+  cursor.appendChild(label);
+  document.body.appendChild(cursor);
 
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-
-  // Posicionamento 1:1 com o mouse — sem interpolação, sem atraso.
-  window.addEventListener('mousemove', (e) => {
-    const x = e.clientX + 'px';
-    const y = e.clientY + 'px';
-    dot.style.transform = `translate(${x}, ${y}) translate(-50%, -50%)`;
-    ring.style.transform = `translate(${x}, ${y}) translate(-50%, -50%)`;
-  }, { passive: true });
-
-  // Some quando o mouse sai da janela
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
-    ring.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity = '1';
-    ring.style.opacity = '1';
-  });
-
-  function setState(className, text) {
-    ring.classList.remove('cursor--link', 'cursor--project', 'cursor--toggle');
-    if (className) ring.classList.add(className);
-    ringText.textContent = text || '';
+  // Movimento suave (não instantâneo, mas rápido o bastante pra não parecer atraso)
+  const hasGsap = typeof gsap !== 'undefined';
+  let moveX, moveY;
+  if (hasGsap) {
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+    moveX = gsap.quickTo(cursor, 'x', { duration: 0.28, ease: 'power3' });
+    moveY = gsap.quickTo(cursor, 'y', { duration: 0.28, ease: 'power3' });
   }
 
-  // Cards de projeto: o cursor vira um selo "Ver"
-  document.querySelectorAll('.project-card').forEach((el) => {
-    el.addEventListener('mouseenter', () => setState('cursor--project', 'Ver'));
+  window.addEventListener('mousemove', (e) => {
+    if (hasGsap) {
+      moveX(e.clientX);
+      moveY(e.clientY);
+    } else {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    }
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+
+  function setState(className, text) {
+    cursor.classList.remove('is-link', 'is-open', 'is-toggle');
+    if (className) cursor.classList.add(className);
+    label.textContent = text || '';
+  }
+
+  // Cards de projeto e piras: cursor vira selo "Abrir"
+  document.querySelectorAll('.project-card, .pira-card').forEach((el) => {
+    el.addEventListener('mouseenter', () => setState('is-open', 'Abrir'));
     el.addEventListener('mouseleave', () => setState(null, ''));
   });
 
-  // Switch de tema: anel encolhe (indica ação pontual/rápida)
+  // Switch de tema: cursor encolhe
   const toggle = document.getElementById('themeToggle');
   if (toggle) {
-    toggle.addEventListener('mouseenter', () => setState('cursor--toggle', ''));
+    toggle.addEventListener('mouseenter', () => setState('is-toggle', ''));
     toggle.addEventListener('mouseleave', () => setState(null, ''));
   }
 
-  // Demais links e botões: anel cresce discretamente
+  // Demais links/botões: cursor cresce discretamente
   document.querySelectorAll('a, button').forEach((el) => {
-    if (el.closest('.project-card') || el.id === 'themeToggle') return;
-    el.addEventListener('mouseenter', () => setState('cursor--link', ''));
+    if (el.closest('.project-card') || el.closest('.pira-card') || el.id === 'themeToggle') return;
+    el.addEventListener('mouseenter', () => setState('is-link', ''));
     el.addEventListener('mouseleave', () => setState(null, ''));
   });
 })();

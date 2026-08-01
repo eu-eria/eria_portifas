@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Éria Alencar | Designer Multidisciplinar</title>
-  <meta name="description" content="Portfólio de Éria Alencar, designer multidisciplinar em Goiás — produto, UI/UX, ID, design visual e embalagens.">
+  <title>Éria | Designer</title>
+  <meta name="description" content="Portfólio de Éria, designer multidisciplinar — produto, UI/UX, identidade visual e embalagens.">
   <meta name="theme-color" content="#f4f4f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
-
-  <!-- Resolve o tema antes da pintura (evita flash de cor errada) -->
   <script>
     (function () {
       try {
@@ -18,13 +16,9 @@
       } catch (e) {}
     })();
   </script>
-
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -32,20 +26,12 @@
 <body>
   <header>
     <div class="id-stack">
-      <a href="index.html" class="tag">Éria Alencar</a>
-      <span class="tag">Designer Multidisciplinar</span>
-      <span class="tag">Goiás&nbsp;|&nbsp;BR</span>
-      <span class="tag tag-map" role="img" aria-label="Mapa de Goiás">
-        <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M20 18 L34 22 L40 14 L52 18 L60 6 L70 10 L74 20 L66 28 L76 34 L80 46 L72 54 L78 64 L70 72 L60 78 L54 88 L44 82 L38 90 L28 84 L20 74 L26 62 L14 50 L22 38 L16 28 Z M58 38 L70 38 L70 46 L58 46 Z"/>
-        </svg>
-      </span>
+      <span class="tag">Éria&nbsp;|&nbsp;Designer&nbsp;|&nbsp;;]</span>
     </div>
 
     <nav class="nav-stack" aria-label="Navegação principal">
       <a href="index.html" class="tag active">Home</a>
       <a href="projects.html" class="tag">Projetos</a>
-      <a href="about.html" class="tag">Sobre</a>
       <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
         <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M18 5h4"/><path d="M20 3v4"/>
@@ -63,6 +49,18 @@
   <main class="main-wrapper">
     <!-- DOBRA 1 — HERO -->
     <section class="hero">
+      <div class="spin-badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
+          </defs>
+          <text>
+            <textPath href="#circlePath" startOffset="0%">Disponível para novos projetos ✦ Disponível para novos projetos ✦</textPath>
+          </text>
+        </svg>
+        <span class="spin-badge-dot"></span>
+      </div>
+
       <h1 class="h1-brutal">
         <div class="reveal-text"><span>Éria</span></div>
         <div class="reveal-text"><span><em>Alencar</em></span></div>
@@ -70,35 +68,32 @@
 
       <!-- TROQUE A FRASE DO HERO AQUI -->
       <p class="hero-sub text-body">Designer multidisciplinar. Crio produtos, interfaces e ótimas desculpas para colecionar embalagens.</p>
-      <a href="#projetos" class="btn-go" data-scroll-to>Ver projetos ↓</a>
     </section>
 
-    <!-- DOBRA 2 — BENTO DE PROJETOS -->
-    <div class="bento-intro">
-      <p class="eyebrow">Trabalhos selecionados</p>
-      <p class="bento-count">Nº 07</p>
+    <!-- DOBRA 2 — TEASER DE PROJETOS -->
+    <div class="teaser-intro">
+      <p class="eyebrow">Trabalhos recentes</p>
+      <a href="projects.html" class="tag">Ver todos →</a>
     </div>
-    <section class="bento" id="projetos">
-      <a href="project-template.html" class="project-card b-2x2" data-category="ui-ux">
+    <section class="teaser-grid grid-3">
+      <a href="project-template.html" class="project-card" data-category="ui-ux">
         <span class="card-index">01</span>
-        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Fintech App</span>
           <span class="project-category">UI/UX</span>
         </div>
       </a>
-
-      <a href="project-template.html" class="project-card b-2x1" data-category="embalagem">
+      <a href="project-template.html" class="project-card" data-category="embalagem">
         <span class="card-index">02</span>
-        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
+        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info">
           <span class="project-title">Café Torra</span>
           <span class="project-category">Embalagem</span>
         </div>
       </a>
-
       <a href="project-template.html" class="project-card" data-category="produto">
         <span class="card-index">03</span>
         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
@@ -106,46 +101,6 @@
         <div class="project-info">
           <span class="project-title">Luminária X</span>
           <span class="project-category">Produto</span>
-        </div>
-      </a>
-
-      <a href="project-template.html" class="project-card" data-category="digital">
-        <span class="card-index">04</span>
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Aurora App</span>
-          <span class="project-category">Digital</span>
-        </div>
-      </a>
-
-      <a href="project-template.html" class="project-card" data-category="branding">
-        <span class="card-index">05</span>
-        <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Nébula</span>
-          <span class="project-category">Branding</span>
-        </div>
-      </a>
-
-      <a href="project-template.html" class="project-card b-2x1" data-category="digital">
-        <span class="card-index">06</span>
-        <img src="https://picsum.photos/seed/eria-zine/1200/700" alt="Capa do projeto Zine Ruído" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Zine Ruído</span>
-          <span class="project-category">Digital</span>
-        </div>
-      </a>
-
-      <a href="project-template.html" class="project-card" data-category="ui-ux">
-        <span class="card-index">07</span>
-        <img src="https://picsum.photos/seed/eria-feira/800/1000" alt="Capa do projeto Feira Viva" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Feira Viva</span>
-          <span class="project-category">UI/UX</span>
         </div>
       </a>
     </section>
@@ -174,27 +129,28 @@
       </div>
     </section>
 
-    <!-- DOBRA 4 — BREVE SOBRE MIM -->
-    <section class="about-blurb" id="sobre">
+    <!-- DOBRA 4 — SOBRE (breve) -->
+    <section class="about-blurb">
       <p class="eyebrow">Sobre mim</p>
-      <h2 class="h2-brutal">Designer multidisciplinar com XP em produto, UI/UX, ID e design visual.</h2>
-      <p class="text-body">Transito entre o digital e o físico — do fluxo de onboarding ao molde da caixa — e tenho uma paixão declarada por embalagens.</p>
-      <a href="about.html" class="btn-go">Conheça a história →</a>
+      <h2 class="h2-brutal">Produto, UI/UX, ID e design visual — de olho no detalhe.</h2>
+      <p class="text-body">Baseada em Goiás. Transito entre o digital e o físico, do fluxo de onboarding ao molde da caixa, com uma queda declarada por embalagens.</p>
     </section>
 
-    <!-- DOBRA 5 — FAIXA FINAL (antes do rodapé) -->
-    <section class="marquee marquee-alt" aria-label="Disponível para projetos">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>Vamos trabalhar juntos?</span><span class="sep">/</span>
-          <span>Disponível para novos projetos</span><span class="sep">/</span>
-          <span>Bora conversar?</span><span class="sep">/</span>
+    <!-- DOBRA 5 — CONTATO -->
+    <section class="contact-section">
+      <div class="grid-2" style="gap: 4rem; align-items: start;">
+        <div>
+          <p class="eyebrow" style="margin-bottom: 1rem;">Bora?</p>
+          <h2 class="h2-brutal" style="font-size: clamp(1.8rem, 4vw, 3rem);">Tem um projeto em mente?</h2>
+          <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta um pouco sobre a ideia — respondo por aqui ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
         </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>Vamos trabalhar juntos?</span><span class="sep">/</span>
-          <span>Disponível para novos projetos</span><span class="sep">/</span>
-          <span>Bora conversar?</span><span class="sep">/</span>
-        </div>
+        <!-- TROQUE O SEU ENDPOINT DO FORMSPREE ABAIXO -->
+        <form action="https://formspree.io/f/seu-endpoint-aqui" method="POST" class="contact-form">
+          <input type="text" name="name" placeholder="Seu Nome" required>
+          <input type="email" name="email" placeholder="Seu Email" required>
+          <textarea name="message" rows="3" placeholder="Sua Mensagem" required></textarea>
+          <button type="submit">Enviar mensagem →</button>
+        </form>
       </div>
     </section>
   </main>
@@ -204,7 +160,6 @@
     <span class="footer-note">© 2026 Éria Alencar — feito à mão em Goiás.</span>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

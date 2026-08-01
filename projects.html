@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projetos de Éria Alencar — UI/UX, produto, embalagem, branding e design digital.">
-  <title>Projetos | Éria Alencar</title>
+  <meta name="description" content="Projetos e produções de Éria — UI/UX, produto, embalagem, branding, design digital e experimentos.">
+  <title>Projetos | Éria</title>
   <meta name="theme-color" content="#f4f4f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
   <script>
@@ -18,7 +18,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -26,20 +26,12 @@
 <body>
   <header>
     <div class="id-stack">
-      <a href="index.html" class="tag">Éria Alencar</a>
-      <span class="tag">Designer Multidisciplinar</span>
-      <span class="tag">Baseada em Goiás&nbsp;|&nbsp;BR</span>
-      <span class="tag tag-map" role="img" aria-label="Mapa de Goiás">
-        <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M20 18 L34 22 L40 14 L52 18 L60 6 L70 10 L74 20 L66 28 L76 34 L80 46 L72 54 L78 64 L70 72 L60 78 L54 88 L44 82 L38 90 L28 84 L20 74 L26 62 L14 50 L22 38 L16 28 Z M58 38 L70 38 L70 46 L58 46 Z"/>
-        </svg>
-      </span>
+      <span class="tag">Éria&nbsp;|&nbsp;Designer&nbsp;|&nbsp;;]</span>
     </div>
 
     <nav class="nav-stack" aria-label="Navegação principal">
       <a href="index.html" class="tag">Home</a>
       <a href="projects.html" class="tag active">Projetos</a>
-      <a href="about.html" class="tag">Sobre</a>
       <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
         <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M18 5h4"/><path d="M20 3v4"/>
@@ -55,67 +47,86 @@
   </header>
 
   <main class="main-wrapper">
-    <section class="hero" style="min-height: 40vh; padding-top: 9rem;">
-      <p class="eyebrow">Projetos selecionados</p>
-      <h1 class="h1-brutal">Arquivo</h1>
+    <section class="hero" style="min-height: 34vh; padding-top: 9rem;">
+      <p class="eyebrow">Arquivo</p>
+      <h1 class="h1-brutal">Projetos</h1>
     </section>
 
-    <!-- BARRA DE FILTROS -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
-      <button class="filter-btn" data-filter="embalagem">Embalagem</button>
-      <button class="filter-btn" data-filter="produto">Produto</button>
-      <button class="filter-btn" data-filter="digital">Digital</button>
-      <button class="filter-btn" data-filter="branding">Branding</button>
+    <!-- SWITCH: PROJETOS / PIRAS -->
+    <div class="view-switch">
+      <button type="button" class="view-btn active" data-view="projetos">Projetos</button>
+      <button type="button" class="view-btn" data-view="piras">Piras</button>
     </div>
 
-    <!-- GRID DE PROJETOS -->
-    <section class="projects-grid grid-3">
-      <!-- Repita as tags a.project-card conforme necessário. Lembre de ajustar o data-category -->
-      <a href="project-template.html" class="project-card" data-category="ui-ux">
-        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Fintech App</span><span class="project-category">UI/UX</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="embalagem">
-        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Café Torra</span><span class="project-category">Embalagem</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="produto">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Luminária X</span><span class="project-category">Produto</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="digital">
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Aurora App</span><span class="project-category">Digital</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="branding">
-        <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Nébula</span><span class="project-category">Branding</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="digital">
-        <img src="https://picsum.photos/seed/eria-zine/800/1000" alt="Capa do projeto Zine Ruído" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Zine Ruído</span><span class="project-category">Digital</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="ui-ux">
-        <img src="https://picsum.photos/seed/eria-feira/800/1000" alt="Capa do projeto Feira Viva" class="project-image">
-        <div class="project-info">
-          <span class="project-title">Feira Viva</span><span class="project-category">UI/UX</span>
-        </div>
-      </a>
-    </section>
+    <!-- ================= PROJETOS ================= -->
+    <div id="view-projetos" class="view-panel">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+        <button class="filter-btn" data-filter="embalagem">Embalagem</button>
+        <button class="filter-btn" data-filter="produto">Produto</button>
+        <button class="filter-btn" data-filter="digital">Digital</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+      </div>
+
+      <section class="bento">
+        <a href="project-template.html" class="project-card b-2x2" data-category="ui-ux">
+          <span class="card-index">01</span>
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Fintech App</span><span class="project-category">UI/UX</span></div>
+        </a>
+        <a href="project-template.html" class="project-card b-2x1" data-category="embalagem">
+          <span class="card-index">02</span>
+          <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Café Torra</span><span class="project-category">Embalagem</span></div>
+        </a>
+        <a href="project-template.html" class="project-card" data-category="produto">
+          <span class="card-index">03</span>
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Luminária X</span><span class="project-category">Produto</span></div>
+        </a>
+        <a href="project-template.html" class="project-card" data-category="digital">
+          <span class="card-index">04</span>
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Aurora App</span><span class="project-category">Digital</span></div>
+        </a>
+        <a href="project-template.html" class="project-card" data-category="branding">
+          <span class="card-index">05</span>
+          <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Nébula</span><span class="project-category">Branding</span></div>
+        </a>
+        <a href="project-template.html" class="project-card b-2x1" data-category="digital">
+          <span class="card-index">06</span>
+          <img src="https://picsum.photos/seed/eria-zine/1200/700" alt="Capa do projeto Zine Ruído" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Zine Ruído</span><span class="project-category">Digital</span></div>
+        </a>
+        <a href="project-template.html" class="project-card" data-category="ui-ux">
+          <span class="card-index">07</span>
+          <img src="https://picsum.photos/seed/eria-feira/800/1000" alt="Capa do projeto Feira Viva" class="project-image">
+          <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+          <div class="project-info"><span class="project-title">Feira Viva</span><span class="project-category">UI/UX</span></div>
+        </a>
+      </section>
+    </div>
+
+    <!-- ================= PIRAS ================= -->
+    <div id="view-piras" class="view-panel" hidden>
+      <p class="text-body p-2" style="max-width: 50ch; padding-bottom: 0;">Produções sem cliente, sem briefing — só vontade de testar uma ideia. Clique pra ampliar.</p>
+      <section class="grid-3" style="margin-top: 1rem;">
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-01/700/900" alt="Pira 01 — estudo de cartaz" class="project-image"><span class="pira-caption">Estudo de cartaz — tipografia</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-02/700/900" alt="Pira 02 — paleta de cor" class="project-image"><span class="pira-caption">Exercício de paleta</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-03/700/900" alt="Pira 03 — textura" class="project-image"><span class="pira-caption">Textura digital</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-04/700/900" alt="Pira 04 — rótulo especulativo" class="project-image"><span class="pira-caption">Rótulo especulativo</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-05/700/900" alt="Pira 05 — ícone" class="project-image"><span class="pira-caption">Set de ícones</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-06/700/900" alt="Pira 06 — colagem" class="project-image"><span class="pira-caption">Colagem digital</span></div>
+      </section>
+    </div>
   </main>
 
   <footer>
