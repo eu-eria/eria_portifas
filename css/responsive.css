@@ -20,18 +20,11 @@
   }
   .bento .project-card { border-right: none; }
 
-  /* Pilhas de tags mais compactas nos cantos */
   header { padding: 0.75rem; }
-  .tag { font-size: 0.55rem; letter-spacing: 0.06em; }
-  .tag-map svg { width: 26px; height: 26px; }
+  .tag { font-size: 0.62rem; }
+  .tag-map svg { width: 24px; height: 24px; }
 
-  .hero {
-    padding-top: 12rem;
-    min-height: auto;
-  }
-  .hero-title-row { gap: 1.25rem; }
-  .ps1-runner { width: 120px; }
-  .ps1-stage { padding-bottom: 0; }
+  .hero { padding-top: 12rem; min-height: auto; }
 
   .about-blurb { padding-left: 1.25rem; padding-right: 1.25rem; }
 
@@ -39,15 +32,15 @@
 
   footer {
     flex-direction: column;
-    gap: 2rem;
-    font-size: 1.5rem;
+    gap: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
   }
-  .footer-egg { text-align: center; }
+  .footer-note { text-align: center; }
 
   .filter-bar { flex-wrap: wrap; }
 }
 
 @media (max-width: 420px) {
-  .tag { font-size: 0.5rem; }
+  .tag { font-size: 0.58rem; }
 }

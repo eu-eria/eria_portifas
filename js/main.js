@@ -43,7 +43,7 @@ try {
 } catch (e) { /* segue o jogo */ }
 
 // ============================================
-// PRESS START ▼ — rolagem suave até a âncora
+// Rolagem suave até a âncora (botão do hero)
 // ============================================
 document.querySelectorAll('[data-scroll-to]').forEach((el) => {
   el.addEventListener('click', (e) => {
@@ -55,41 +55,5 @@ document.querySelectorAll('[data-scroll-to]').forEach((el) => {
   });
 });
 
-// ============================================
-// EASTER EGG 1 — KONAMI CODE (↑ ↑ ↓ ↓ ← → ← → B A)
-// Liga/desliga o "modo retro" com scanlines de CRT
-// ============================================
-const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-let konamiIndex = 0;
-
-window.addEventListener('keydown', (e) => {
-  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-  if (key === KONAMI[konamiIndex]) {
-    konamiIndex++;
-    if (konamiIndex === KONAMI.length) {
-      konamiIndex = 0;
-      document.body.classList.toggle('retro-mode');
-      showToast(document.body.classList.contains('retro-mode')
-        ? '★ MODO RETRO DESBLOQUEADO'
-        : 'MODO RETRO: OFF');
-    }
-  } else {
-    konamiIndex = key === KONAMI[0] ? 1 : 0;
-  }
-});
-
-function showToast(message) {
-  const old = document.querySelector('.toast');
-  if (old) old.remove();
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 2600);
-}
-
-// ============================================
-// EASTER EGG 2 — mensagem no console pra quem abre o inspetor
-// ============================================
-console.log('%cÉRIA.EXE ▸ carregado com sucesso', 'font-family: monospace; font-weight: bold; font-size: 14px;');
-console.log('%cdica: ↑ ↑ ↓ ↓ ← → ← → B A', 'font-family: monospace; color: #0033ff;');
+// Uma saudação discreta pra quem curiosamente abre o console :)
+console.log('Oi! Se você chegou até aqui pelo console, provavelmente também gosta de detalhe. Vamos conversar? seuemail@dominio.com');

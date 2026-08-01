@@ -32,12 +32,6 @@ if (typeof gsap !== 'undefined') {
       });
     }
 
-    // Entrada do personagem PS1
-    const stage = document.querySelector('.ps1-stage');
-    if (stage) {
-      gsap.from(stage, { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', delay: 0.55 });
-    }
-
     // Fade up nos cards de projeto ao scrollar (grid e bento)
     const cards = document.querySelectorAll('.project-card');
     cards.forEach((card) => {
@@ -54,17 +48,16 @@ if (typeof gsap !== 'undefined') {
     });
 
     // ==========================================
-    // INTERAÇÃO DE SCROLL NO DASHBOARD (bento)
-    // Parallax: cada imagem viaja em velocidade
-    // própria enquanto o card passa pela tela
+    // Parallax sutil: cada imagem do bento viaja em
+    // velocidade própria enquanto o card passa pela tela
     // ==========================================
     document.querySelectorAll('.bento .project-image').forEach((img, i) => {
-      const drift = 7 + (i % 3) * 3; // velocidades levemente diferentes
+      const drift = 6 + (i % 3) * 2;
       gsap.fromTo(img,
-        { yPercent: -drift, scale: 1.16 },
+        { yPercent: -drift, scale: 1.12 },
         {
           yPercent: drift,
-          scale: 1.16,
+          scale: 1.12,
           ease: 'none',
           scrollTrigger: {
             trigger: img.closest('.project-card'),
@@ -76,7 +69,7 @@ if (typeof gsap !== 'undefined') {
       );
     });
 
-    // Saída do hero: o nome desliza e o personagem "sai correndo"
+    // Saída do hero: o nome desliza de leve ao rolar
     const hero = document.querySelector('.hero');
     if (hero && hero.querySelector('.h1-brutal')) {
       gsap.to(hero.querySelector('.h1-brutal'), {
@@ -85,14 +78,6 @@ if (typeof gsap !== 'undefined') {
         ease: 'none',
         scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
       });
-      if (stage) {
-        gsap.to(stage, {
-          x: 140,
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
-        });
-      }
     }
 
     // Faixas entortam de leve conforme a velocidade do scroll

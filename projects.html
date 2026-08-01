@@ -16,14 +16,15 @@
       } catch (e) {}
     })();
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <header>
-    <!-- Canto superior esquerdo: identidade em pilha de tags -->
     <div class="id-stack">
       <a href="index.html" class="tag">Éria Alencar</a>
       <span class="tag">Designer Multidisciplinar</span>
@@ -35,18 +36,18 @@
       </span>
     </div>
 
-    <!-- Canto superior direito: navegação em pilha de tags -->
     <nav class="nav-stack" aria-label="Navegação principal">
       <a href="index.html" class="tag">Home</a>
       <a href="projects.html" class="tag active">Projetos</a>
       <a href="about.html" class="tag">Sobre</a>
       <a href="contact.html" class="tag">Contato</a>
       <button type="button" id="themeToggle" class="tag theme-toggle" aria-label="Alternar modo de cor" title="Modo de cor">
-        <svg class="icon-moon" width="10" height="14" viewBox="0 0 5 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
-          <rect x="2" y="0" width="3" height="1"/><rect x="1" y="1" width="3" height="1"/><rect x="0" y="2" width="3" height="1"/><rect x="0" y="3" width="3" height="1"/><rect x="0" y="4" width="3" height="1"/><rect x="1" y="5" width="3" height="1"/><rect x="2" y="6" width="3" height="1"/>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z"/>
         </svg>
-        <svg class="icon-sun" width="14" height="14" viewBox="0 0 7 7" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">
-          <rect x="2" y="2" width="3" height="3"/><rect x="3" y="0" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
         </svg>
       </button>
     </nav>
@@ -54,10 +55,8 @@
 
   <main class="main-wrapper">
     <section class="hero" style="min-height: 40vh; padding-top: 9rem;">
-      <p class="mono-label"><span class="blink">▸</span> SELECT STAGE</p>
-      <h1 class="h1-brutal">
-        <div class="reveal-text"><span>Arquivo</span></div>
-      </h1>
+      <p class="eyebrow">Projetos selecionados</p>
+      <h1 class="h1-brutal">Arquivo</h1>
     </section>
 
     <!-- BARRA DE FILTROS -->
@@ -92,9 +91,9 @@
         </div>
       </a>
       <a href="project-template.html" class="project-card" data-category="digital">
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Pixel Quest" class="project-image">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
         <div class="project-info">
-          <span class="project-title">Pixel Quest</span><span class="project-category">Digital</span>
+          <span class="project-title">Aurora App</span><span class="project-category">Digital</span>
         </div>
       </a>
       <a href="project-template.html" class="project-card" data-category="branding">
@@ -120,14 +119,14 @@
 
   <footer>
     <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
-    <span class="footer-egg">© 2026 · INSERT COFFEE TO CONTINUE</span>
+    <span class="footer-note">© 2026 Éria Alencar — feito à mão em Goiás.</span>
   </footer>
 
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/animations.js"></script>
-  <script src="assets/js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/navigation.js"></script>
 </body>
 </html>
