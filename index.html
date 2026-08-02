@@ -18,7 +18,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -26,7 +26,9 @@
 <body>
   <header>
     <div class="id-stack">
-      <span class="tag">Éria&nbsp;|&nbsp;Designer&nbsp;|&nbsp;;]</span>
+      <span class="tag">Éria</span>
+      <span class="tag">Designer</span>
+      <span class="tag">;]</span>
     </div>
 
     <nav class="nav-stack" aria-label="Navegação principal">
@@ -49,7 +51,84 @@
   <main class="main-wrapper">
     <!-- DOBRA 1 — HERO -->
     <section class="hero">
-      <div class="spin-badge" aria-hidden="true">
+      <h1 class="h1-brutal">
+        <div class="reveal-text"><span>Éria</span></div>
+        <div class="reveal-text"><span><em>Alencar</em></span></div>
+      </h1>
+
+      <!-- TROQUE/AJUSTE AS FRASES DO HERO AQUI — elas se revezam sozinhas -->
+      <div class="hero-sub-wrap">
+        <p class="hero-sub text-body is-active">Designer multidisciplinar — e curiosa em tempo integral.</p>
+        <p class="hero-sub text-body">Transformo briefing em produto, tela e embalagem.</p>
+        <p class="hero-sub text-body">Grid organizado. Ideias, nem sempre.</p>
+        <p class="hero-sub text-body">Detalhe é o que separa "pronto" de "bom".</p>
+      </div>
+    </section>
+
+    <!-- DOBRA 2 — TEASER DE PROJETOS (bento assimétrico) -->
+    <div class="teaser-intro">
+      <p class="eyebrow">Trabalhos recentes</p>
+      <a href="projects.html" class="tag">Ver todos →</a>
+    </div>
+    <section class="teaser-bento">
+      <a href="project-template.html" class="project-card t-tall" data-category="ui-ux">
+        <span class="card-index">01</span>
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=900&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+        <div class="project-info"><span class="project-title">Fintech App</span><span class="project-category">UI/UX</span></div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="embalagem">
+        <span class="card-index">02</span>
+        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+        <div class="project-info"><span class="project-title">Café Torra</span><span class="project-category">Embalagem</span></div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="produto">
+        <span class="card-index">03</span>
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+        <div class="project-info"><span class="project-title">Luminária X</span><span class="project-category">Produto</span></div>
+      </a>
+    </section>
+
+    <!-- DOBRA 3 — FAIXA DE ÁREAS DE ATUAÇÃO (gira feito caça-níquel ao passar nos cards acima) -->
+    <section class="marquee" aria-label="Áreas de atuação">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>UI/UX</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Produto</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Identidade</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Embalagem</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Branding</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Web</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>UI/UX</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Produto</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Identidade</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Embalagem</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Branding</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+          <span>Web</span><span class="sep"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12.0,2.0 13.6,8.0 19.1,4.9 16.0,10.4 22.0,12.0 16.0,13.6 19.1,19.1 13.6,16.0 12.0,22.0 10.4,16.0 4.9,19.1 8.0,13.6 2.0,12.0 8.0,10.4 4.9,4.9 10.4,8.0"/></svg></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOBRA 4 — SOBRE (breve, com espaço pra foto/gif) -->
+    <section class="about-blurb">
+      <div class="grid-2">
+        <div>
+          <p class="eyebrow">Sobre mim</p>
+          <h2 class="h2-brutal" style="margin: 0.75rem 0 1.25rem;">Produto, UI/UX, ID e design visual.</h2>
+          <p class="text-body">Baseada em Goiás, trabalho onde o digital encontra o físico: num dia é o fluxo de onboarding, no outro é o molde certo de uma caixa. Regra pessoal: se não faz sentido pra quem usa, volta pra prancheta.</p>
+        </div>
+        <!-- TROQUE POR SUA FOTO OU GIF: <img src="assets/eu.jpg" alt="Éria" class="about-photo" style="border-style: solid; object-fit: cover;"> -->
+        <div class="about-photo">Foto ou GIF aqui</div>
+      </div>
+    </section>
+
+    <!-- DOBRA 5 — CONTATO -->
+    <section class="contact-section">
+      <div class="spin-badge" style="top: 0; right: 2rem;" aria-hidden="true">
         <svg viewBox="0 0 100 100">
           <defs>
             <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
@@ -61,88 +140,11 @@
         <span class="spin-badge-dot"></span>
       </div>
 
-      <h1 class="h1-brutal">
-        <div class="reveal-text"><span>Éria</span></div>
-        <div class="reveal-text"><span><em>Alencar</em></span></div>
-      </h1>
-
-      <!-- TROQUE A FRASE DO HERO AQUI -->
-      <p class="hero-sub text-body">Designer multidisciplinar. Crio produtos, interfaces e ótimas desculpas para colecionar embalagens.</p>
-    </section>
-
-    <!-- DOBRA 2 — TEASER DE PROJETOS -->
-    <div class="teaser-intro">
-      <p class="eyebrow">Trabalhos recentes</p>
-      <a href="projects.html" class="tag">Ver todos →</a>
-    </div>
-    <section class="teaser-grid grid-3">
-      <a href="project-template.html" class="project-card" data-category="ui-ux">
-        <span class="card-index">01</span>
-        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Fintech App" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Fintech App</span>
-          <span class="project-category">UI/UX</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="embalagem">
-        <span class="card-index">02</span>
-        <img src="https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Café Torra" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Café Torra</span>
-          <span class="project-category">Embalagem</span>
-        </div>
-      </a>
-      <a href="project-template.html" class="project-card" data-category="produto">
-        <span class="card-index">03</span>
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
-        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
-        <div class="project-info">
-          <span class="project-title">Luminária X</span>
-          <span class="project-category">Produto</span>
-        </div>
-      </a>
-    </section>
-
-    <!-- DOBRA 3 — FAIXA DE ÁREAS DE ATUAÇÃO -->
-    <section class="marquee" aria-label="Áreas de atuação">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>UI/UX</span><span class="sep">/</span>
-          <span>Produto</span><span class="sep">/</span>
-          <span>Identidade</span><span class="sep">/</span>
-          <span>Design Visual</span><span class="sep">/</span>
-          <span>Embalagem</span><span class="sep">/</span>
-          <span>Branding</span><span class="sep">/</span>
-          <span>Web</span><span class="sep">/</span>
-        </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>UI/UX</span><span class="sep">/</span>
-          <span>Produto</span><span class="sep">/</span>
-          <span>Identidade</span><span class="sep">/</span>
-          <span>Design Visual</span><span class="sep">/</span>
-          <span>Embalagem</span><span class="sep">/</span>
-          <span>Branding</span><span class="sep">/</span>
-          <span>Web</span><span class="sep">/</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- DOBRA 4 — SOBRE (breve) -->
-    <section class="about-blurb">
-      <p class="eyebrow">Sobre mim</p>
-      <h2 class="h2-brutal">Produto, UI/UX, ID e design visual — de olho no detalhe.</h2>
-      <p class="text-body">Baseada em Goiás. Transito entre o digital e o físico, do fluxo de onboarding ao molde da caixa, com uma queda declarada por embalagens.</p>
-    </section>
-
-    <!-- DOBRA 5 — CONTATO -->
-    <section class="contact-section">
       <div class="grid-2" style="gap: 4rem; align-items: start;">
         <div>
           <p class="eyebrow" style="margin-bottom: 1rem;">Bora?</p>
-          <h2 class="h2-brutal" style="font-size: clamp(1.8rem, 4vw, 3rem);">Tem um projeto em mente?</h2>
-          <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta um pouco sobre a ideia — respondo por aqui ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
+          <h2 class="h2-brutal" style="font-size: clamp(1.6rem, 4vw, 2.8rem);">Tem um projeto em mente?</h2>
+          <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta a ideia. Prometo responder rápido (e sem enrolação). Ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
         </div>
         <!-- TROQUE O SEU ENDPOINT DO FORMSPREE ABAIXO -->
         <form action="https://formspree.io/f/seu-endpoint-aqui" method="POST" class="contact-form">
@@ -164,7 +166,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/cursor.js"></script>
+  <script src="js/ripple.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/marquee-slot.js"></script>
 </body>
 </html>

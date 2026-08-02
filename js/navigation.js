@@ -3,6 +3,21 @@
 // ============================================
 const viewBtns = document.querySelectorAll('.view-btn');
 const viewPanels = document.querySelectorAll('.view-panel');
+const titleWord = document.querySelector('.title-word');
+const titleWrap = document.querySelector('.title-word-wrap');
+
+function swapTitle(target) {
+  if (!titleWord) return;
+  const newText = target === 'piras' ? 'Piras' : 'Projetos';
+  if (titleWord.textContent === newText) return;
+
+  titleWord.classList.add('is-swapping');
+  setTimeout(() => {
+    titleWord.textContent = newText;
+    titleWord.classList.remove('is-swapping');
+    if (titleWrap) titleWrap.classList.toggle('is-piras', target === 'piras');
+  }, 220);
+}
 
 if (viewBtns.length > 0) {
   viewBtns.forEach((btn) => {
@@ -11,6 +26,8 @@ if (viewBtns.length > 0) {
 
       viewBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
+
+      swapTitle(target);
 
       viewPanels.forEach((panel) => {
         const show = panel.id === `view-${target}`;

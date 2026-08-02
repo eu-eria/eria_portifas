@@ -5,13 +5,28 @@
 /* FAIXA / MARQUEE */
 @keyframes marquee-scroll { to { transform: translateX(-50%); } }
 
-/* SELO GIRATÓRIO DO HERO */
+/* SELOS GIRATÓRIOS */
 @keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes spin-medium { to { transform: rotate(360deg); } }
 
-/* ACESSIBILIDADE: respeita quem prefere menos movimento */
+/* SLOT MACHINE — pop ao "cair" na categoria certa */
+@keyframes slot-pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* CLIQUE — ripple */
+@keyframes ripple-pop {
+  0% { width: 10px; height: 10px; opacity: 0.9; }
+  100% { width: 42px; height: 42px; opacity: 0; }
+}
+
+/* ACESSIBILIDADE */
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
   .reveal-text span { transform: none; }
   .project-image { transition: none; }
-  .spin-badge svg { animation: none; }
+  .spin-badge svg, .title-star svg { animation: none; }
+  .click-ripple { animation: none; display: none; }
 }

@@ -6,11 +6,10 @@
   --text-color: #161514;
   --accent-color: #c4432b;
   --border-color: #161514;
-  --font-display: 'Bricolage Grotesque', 'Space Grotesk', -apple-system, sans-serif;
+  --font-display: 'Unbounded', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color-scheme: light;
 }
-
 :root[data-theme="dark"] {
   --bg-color: #1a1a1a;
   --text-color: #f4f4f0;
@@ -18,21 +17,16 @@
   --border-color: #f4f4f0;
   color-scheme: dark;
 }
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-color: #1a1a1a;
-    --text-color: #f4f4f0;
-    --accent-color: #e8714f;
-    --border-color: #f4f4f0;
+    --bg-color: #1a1a1a; --text-color: #f4f4f0; --accent-color: #e8714f; --border-color: #f4f4f0;
     color-scheme: dark;
   }
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* ============================================
-   TIPOGRAFIA — geométrica, sem serifa
+   TIPOGRAFIA
    ============================================ */
 body {
   font-family: var(--font-body);
@@ -48,25 +42,20 @@ ul { list-style: none; }
 
 .h1-brutal {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: clamp(3.2rem, 9vw, 8.5rem);
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  line-height: 0.94;
+  font-size: clamp(2.6rem, 8vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
   text-transform: uppercase;
 }
-.h1-brutal em {
-  font-style: normal;
-  font-weight: 650;
-  color: var(--accent-color);
-}
+.h1-brutal em { font-style: normal; font-weight: 600; color: var(--accent-color); }
 
 .h2-brutal {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 5vw, 4.5rem);
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  font-size: clamp(1.6rem, 4.5vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   text-transform: uppercase;
 }
 
@@ -82,44 +71,24 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   HEADER — tag única à esquerda, nav à direita
+   HEADER — três tags à esquerda, nav à direita
    ============================================ */
 .main-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
 
 header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.25rem;
-  pointer-events: none;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 1.25rem; pointer-events: none;
 }
-
-.id-stack, .nav-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  pointer-events: auto;
-}
+.id-stack, .nav-stack { display: flex; flex-direction: column; gap: 3px; pointer-events: auto; }
 .id-stack { align-items: flex-start; }
 .nav-stack { align-items: flex-end; }
 
 .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  background: var(--text-color);
-  color: var(--bg-color);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.75rem;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  padding: 0.65em 0.85em;
-  border: none;
-  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 0.5em;
+  background: var(--text-color); color: var(--bg-color);
+  font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; line-height: 1;
+  letter-spacing: 0.02em; padding: 0.65em 0.85em; border: none; white-space: nowrap;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff; }
@@ -131,47 +100,35 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ============================================
-   HERO
+   HERO (sem divisórias entre dobras)
    ============================================ */
-section { border-bottom: 1px solid var(--border-color); }
-
 .hero {
   padding: 11rem 2rem 5rem 2rem;
-  min-height: 88vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1.5rem;
+  min-height: 82vh;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 1.25rem;
   position: relative;
 }
-.hero-sub { max-width: 46ch; }
 
-/* Selo giratório "disponível para novos projetos" */
-.spin-badge {
-  position: absolute;
-  top: 8rem;
-  right: 2rem;
-  width: 110px;
-  height: 110px;
-  pointer-events: none;
-}
+/* Legenda giratória (fica trocada de lugar: agora usada no contato) */
+.spin-badge { position: absolute; width: 108px; height: 108px; pointer-events: none; }
 .spin-badge svg { width: 100%; height: 100%; animation: spin-slow 14s linear infinite; }
 .spin-badge text {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 8.6px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  fill: var(--text-color);
+  font-family: var(--font-body); font-weight: 600; font-size: 8.6px; letter-spacing: 0.15em;
+  text-transform: uppercase; fill: var(--text-color);
 }
 .spin-badge-dot {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 8px; height: 8px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute; top: 50%; left: 50%; width: 8px; height: 8px;
+  background: var(--accent-color); border-radius: 50%; transform: translate(-50%, -50%);
 }
+
+/* Subtítulo do hero: troca de frase animada */
+.hero-sub-wrap { position: relative; max-width: 46ch; min-height: 3.4em; }
+.hero-sub {
+  position: absolute; top: 0; left: 0;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-sub.is-active { position: relative; opacity: 1; transform: translateY(0); }
 
 /* ============================================
    GRIDS
@@ -180,23 +137,17 @@ section { border-bottom: 1px solid var(--border-color); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
 
 /* ============================================
-   BENTO DE PROJETOS / PIRAS
+   BENTO — projetos / piras / teaser
    ============================================ */
-.bento-intro {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.bento-intro, .teaser-intro {
+  display: flex; justify-content: space-between; align-items: baseline;
   padding: 2.5rem 2rem 1.5rem;
-  border-bottom: 1px solid var(--border-color);
 }
-.bento-count { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; color: var(--accent-color); }
+.bento-count { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--accent-color); }
 
 .bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
+  display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px;
   grid-auto-flow: dense;
-  border-bottom: none;
 }
 .bento .project-card { display: flex; flex-direction: column; }
 .bento .project-image { flex: 1 1 0%; height: auto; min-height: 0; aspect-ratio: auto; }
@@ -204,143 +155,141 @@ section { border-bottom: 1px solid var(--border-color); }
 .b-2x1 { grid-column: span 2; }
 .b-1x2 { grid-row: span 2; }
 
+/* Teaser bento assimétrico (Home) */
+.teaser-bento {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: repeat(2, 210px);
+  gap: 0;
+}
+.teaser-bento .t-tall { grid-row: span 2; }
+
 .card-index {
   position: absolute; top: 0.85rem; left: 0.85rem; z-index: 3;
   font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em;
   color: #ffffff; mix-blend-mode: difference; pointer-events: none;
 }
-
 .card-reveal {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--accent-color); color: #ffffff;
   font-family: var(--font-body); font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.03em; text-transform: uppercase;
-  padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.5rem;
+  letter-spacing: 0.03em; text-transform: uppercase; padding: 1rem 1.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
 }
 .card-reveal .arrow { transition: transform 0.3s ease; }
 .project-card:hover .card-reveal { transform: translateY(0); }
 .project-card:hover .card-reveal .arrow { transform: translateX(4px); }
 
-/* Cards de PIRAS — sem barra de info, só legenda no hover */
 .pira-card {
-  position: relative;
-  overflow: hidden;
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background: var(--bg-color);
-  cursor: pointer;
+  position: relative; overflow: hidden;
+  border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color); cursor: pointer;
 }
 .grid-3 .pira-card:nth-child(3n) { border-right: none; }
 .pira-caption {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--text-color); color: var(--bg-color);
-  font-family: var(--font-body); font-weight: 600; font-size: 0.75rem;
-  padding: 0.85rem 1.1rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; padding: 0.85rem 1.1rem;
 }
 .pira-card:hover .pira-caption { transform: translateY(0); }
 .pira-card:hover .project-image { transform: scale(1.06); }
 
 .project-card {
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
   display: block; position: relative; overflow: hidden;
-  background: var(--bg-color);
-  transition: background-color 0.25s ease;
+  background: var(--bg-color); transition: background-color 0.25s ease;
 }
 .grid-3 .project-card:nth-child(3n) { border-right: none; }
 
 .project-image {
-  width: 100%; aspect-ratio: 4/5; background-color: #888;
-  object-fit: cover; display: block; transform: scale(1.01);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%; aspect-ratio: 4/5; background-color: #888; object-fit: cover; display: block;
+  transform: scale(1.01); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
-
 .project-info {
-  padding: 1.25rem 1.5rem;
-  border-top: 1px solid var(--border-color);
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  background: inherit;
+  padding: 1.25rem 1.5rem; border-top: 1px solid var(--border-color);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: inherit;
 }
-.project-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 650; text-transform: uppercase; }
+.project-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; text-transform: uppercase; }
 .project-category {
   font-family: var(--font-body); font-weight: 600; font-size: 0.65rem;
-  border: 1px solid var(--border-color); padding: 0.4rem 0.6rem;
-  text-transform: uppercase; white-space: nowrap;
+  border: 1px solid var(--border-color); padding: 0.4rem 0.6rem; text-transform: uppercase; white-space: nowrap;
 }
-
 .project-card:hover .project-image { transform: scale(1.06); }
 .project-card:hover { background-color: var(--text-color); color: var(--bg-color); }
 .project-card:hover .project-info { border-top-color: var(--bg-color); }
 .project-card:hover .project-category { border-color: var(--bg-color); color: var(--bg-color); }
 
 /* ============================================
-   SWITCH PROJETOS / PIRAS
+   SWITCH PROJETOS / PIRAS + título animado
    ============================================ */
-.view-switch {
-  display: flex;
-  gap: 0.6rem;
-  padding: 2rem 2rem 0;
-}
+.view-switch { display: flex; gap: 0.6rem; padding: 1.5rem 2rem 0; }
 .view-btn {
-  background: none;
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  font-family: var(--font-display);
-  font-weight: 650;
-  font-size: 1rem;
-  text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
-  letter-spacing: -0.01em;
-  transition: background 0.15s ease, color 0.15s ease;
+  background: none; color: var(--text-color); border: 1px solid var(--border-color);
+  font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; text-transform: uppercase;
+  padding: 0.75rem 1.5rem; transition: background 0.15s ease, color 0.15s ease;
 }
 .view-btn.active, .view-btn:hover { background: var(--text-color); color: var(--bg-color); }
 .view-panel[hidden] { display: none; }
 
+.title-word-wrap { position: relative; display: inline-block; }
+.title-word { display: inline-block; transition: opacity 0.25s ease, transform 0.25s ease; }
+.title-word.is-swapping { opacity: 0; transform: translateY(8px); }
+.title-star {
+  position: absolute; top: -0.1em; right: -0.75em;
+  width: 0.5em; height: 0.5em;
+  opacity: 0; transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.title-star svg { width: 100%; height: 100%; animation: spin-medium 5s linear infinite; }
+.is-piras .title-star { opacity: 1; }
+
 /* ============================================
-   FAIXAS (MARQUEE)
+   FAIXAS (MARQUEE) + slot-machine ao passar nos cards
    ============================================ */
-.marquee { overflow: hidden; padding: 1.75rem 0; border-bottom: 1px solid var(--border-color); }
+.marquee { overflow: hidden; padding: 1.75rem 0; position: relative; }
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 26s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-group {
-  display: flex; align-items: center; gap: 2.5rem; padding-right: 2.5rem;
-  font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 2rem);
-  font-weight: 650; text-transform: uppercase; white-space: nowrap;
+  display: flex; align-items: center; gap: 2.25rem; padding-right: 2.25rem;
+  font-family: var(--font-display); font-size: clamp(1.15rem, 2.3vw, 1.9rem);
+  font-weight: 600; text-transform: uppercase; white-space: nowrap;
 }
-.marquee-group .sep { font-family: var(--font-body); font-size: 1rem; font-weight: 400; text-transform: none; color: var(--accent-color); }
-.marquee-alt { background: var(--accent-color); color: #ffffff; border-bottom: none; border-top: 1px solid var(--border-color); }
-.marquee-alt .marquee-track { animation-direction: reverse; animation-duration: 30s; }
-.marquee-alt .marquee-group .sep { color: #ffffff; }
+.sep { color: var(--accent-color); display: inline-flex; width: 0.5em; height: 0.5em; }
+.sep svg { width: 100%; height: 100%; }
+
+.marquee.is-spinning .marquee-track { animation-play-state: paused; }
+.slot-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-color); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 5;
+}
+.marquee.is-spinning .slot-overlay { opacity: 1; }
+.slot-word {
+  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.25rem, 2.5vw, 2rem); color: var(--accent-color);
+  display: inline-block; transform: scale(1); transition: transform 0.15s ease;
+}
+.slot-word.landed { animation: slot-pop 0.35s ease; }
 
 /* ============================================
-   TEASER DE PROJETOS (na Home)
+   SOBRE (com espaço pra foto/gif)
    ============================================ */
-.teaser-intro {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border-color);
+.about-blurb { padding: clamp(4rem, 10vh, 7rem) 2rem; }
+.about-blurb .grid-2 { gap: 3rem; align-items: center; }
+.about-photo {
+  aspect-ratio: 4/5;
+  border: 1px dashed var(--border-color);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 1.5rem;
+  font-family: var(--font-body); font-size: 0.75rem; opacity: 0.55;
+  text-transform: uppercase; letter-spacing: 0.04em;
 }
-.teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-.teaser-grid .project-image { aspect-ratio: 3/4; }
 
 /* ============================================
-   SOBRE (breve, na home)
+   CONTATO
    ============================================ */
-.about-blurb {
-  padding: clamp(4rem, 10vh, 7rem) 2rem;
-  display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
-}
-.about-blurb .h2-brutal { max-width: 22ch; }
-.about-blurb .text-body { max-width: 56ch; }
-
-/* ============================================
-   CONTATO (na home)
-   ============================================ */
-.contact-section { padding: clamp(4rem, 10vh, 7rem) 2rem; border-bottom: none; }
+.contact-section { padding: clamp(4rem, 10vh, 7rem) 2rem; position: relative; }
 .contact-form { display: flex; flex-direction: column; gap: 1.75rem; }
 .contact-form input, .contact-form textarea {
   background: transparent; border: none; border-bottom: 2px solid var(--border-color);
@@ -358,18 +307,16 @@ section { border-bottom: 1px solid var(--border-color); }
    FOOTER
    ============================================ */
 footer {
-  padding: 3rem 2rem;
-  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-  font-family: var(--font-display); font-weight: 650; text-transform: uppercase;
-  font-size: 1.5rem;
+  padding: 3rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+  font-family: var(--font-display); font-weight: 600; text-transform: uppercase; font-size: 1.35rem;
 }
 footer a:hover { color: var(--accent-color); }
 .footer-note { font-family: var(--font-body); font-weight: 400; text-transform: none; font-size: 0.75rem; opacity: 0.6; text-align: right; }
 
 /* ============================================
-   FILTROS (categoria dentro de Projetos)
+   FILTROS
    ============================================ */
-.filter-bar { padding: 1.5rem 2rem 2rem; display: flex; gap: 0.75rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; }
+.filter-bar { padding: 1.5rem 2rem 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .filter-btn {
   background: none; color: inherit; border: 1px solid var(--border-color);
   padding: 0.65rem 1.1rem; font-family: var(--font-body); font-weight: 600; font-size: 0.75rem;
@@ -381,61 +328,28 @@ footer a:hover { color: var(--accent-color); }
    LIGHTBOX (piras)
    ============================================ */
 .lightbox {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(22, 21, 20, 0.92);
-  display: flex; align-items: center; justify-content: center;
-  padding: 3rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.25s ease;
+  position: fixed; inset: 0; z-index: 500; background: rgba(22, 21, 20, 0.92);
+  display: flex; align-items: center; justify-content: center; padding: 3rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
 }
 .lightbox.is-open { opacity: 1; pointer-events: auto; }
 .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border: 1px solid #f4f4f0; }
 .lightbox-close {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  background: #f4f4f0; color: #161514; border: none;
-  width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
+  position: absolute; top: 1.5rem; right: 1.5rem; background: #f4f4f0; color: #161514;
+  border: none; width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
 }
 
 /* ============================================
-   CURSOR
+   CLIQUE — pequeno "ripple" ao clicar (cursor padrão do sistema)
    ============================================ */
-html.has-custom-cursor, html.has-custom-cursor a, html.has-custom-cursor button,
-html.has-custom-cursor input, html.has-custom-cursor textarea { cursor: none; }
-
-.cursor {
-  position: fixed; top: 0; left: 0;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: #ffffff;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%);
-  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s ease,
-              opacity 0.2s ease;
+.click-ripple {
+  position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+  border: 1.5px solid var(--accent-color); border-radius: 50%;
+  transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
+  animation: ripple-pop 0.5s ease-out forwards;
 }
-html.has-custom-cursor .cursor { display: flex; }
-
-.cursor-label {
-  font-family: var(--font-body); font-weight: 600; font-size: 0.62rem;
-  letter-spacing: 0.03em; text-transform: uppercase; color: #161514;
-  opacity: 0; transition: opacity 0.15s ease; mix-blend-mode: normal;
-}
-.cursor.is-link { width: 40px; height: 40px; }
-.cursor.is-open {
-  width: 92px; height: 92px;
-  background: #ffffff; mix-blend-mode: normal;
-}
-.cursor.is-open .cursor-label { opacity: 1; }
-.cursor.is-toggle { width: 24px; height: 24px; }
 
 /* ============================================
    UTILITÁRIOS
    ============================================ */
 .p-2 { padding: 2rem; }
-.border-b { border-bottom: 1px solid var(--border-color); }

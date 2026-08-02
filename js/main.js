@@ -19,7 +19,6 @@ if (lenis) {
 
 // ============================================
 // SWITCH DE MODO DE COR
-// (o tema inicial é resolvido no <head> de cada página)
 // ============================================
 const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
@@ -27,11 +26,10 @@ if (themeToggle) {
     const current = document.documentElement.dataset.theme || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) { /* modo anônimo etc. */ }
+    try { localStorage.setItem('theme', next); } catch (e) {}
   });
 }
 
-// Se a pessoa nunca escolheu manualmente, acompanha mudanças do sistema
 try {
   if (!localStorage.getItem('theme') && window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -40,10 +38,10 @@ try {
       }
     });
   }
-} catch (e) { /* segue o jogo */ }
+} catch (e) {}
 
 // ============================================
-// Rolagem suave até a âncora (botão do hero)
+// Rolagem suave até a âncora
 // ============================================
 document.querySelectorAll('[data-scroll-to]').forEach((el) => {
   el.addEventListener('click', (e) => {
@@ -55,5 +53,21 @@ document.querySelectorAll('[data-scroll-to]').forEach((el) => {
   });
 });
 
-// Uma saudação discreta pra quem curiosamente abre o console :)
-console.log('Oi! Se você chegou até aqui pelo console, provavelmente também gosta de detalhe. Vamos conversar? seuemail@dominio.com');
+// ============================================
+// Frases do hero se revezando (em vez de uma copy fixa)
+// ============================================
+const heroLines = document.querySelectorAll('.hero-sub');
+if (heroLines.length > 1) {
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    let current = 0;
+    setInterval(() => {
+      heroLines[current].classList.remove('is-active');
+      current = (current + 1) % heroLines.length;
+      heroLines[current].classList.add('is-active');
+    }, 3200);
+  }
+}
+
+// Uma saudação discreta pra quem abre o console :)
+console.log('Oi! Se você chegou até aqui pelo console, a gente provavelmente combina. Vamos conversar? seuemail@dominio.com');
