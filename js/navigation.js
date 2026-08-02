@@ -11,11 +11,15 @@ function swapTitle(target) {
   const newText = target === 'piras' ? 'Piras' : 'Projetos';
   if (titleWord.textContent === newText) return;
 
+  // Saindo de Piras: some com a estrela já, sem esperar o texto trocar
+  if (target !== 'piras' && titleWrap) titleWrap.classList.remove('is-piras');
+
   titleWord.classList.add('is-swapping');
   setTimeout(() => {
     titleWord.textContent = newText;
     titleWord.classList.remove('is-swapping');
-    if (titleWrap) titleWrap.classList.toggle('is-piras', target === 'piras');
+    // Entrando em Piras: estrela aparece junto com o texto novo
+    if (target === 'piras' && titleWrap) titleWrap.classList.add('is-piras');
   }, 220);
 }
 

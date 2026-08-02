@@ -53,21 +53,5 @@ document.querySelectorAll('[data-scroll-to]').forEach((el) => {
   });
 });
 
-// ============================================
-// Frases do hero se revezando (em vez de uma copy fixa)
-// ============================================
-const heroLines = document.querySelectorAll('.hero-sub');
-if (heroLines.length > 1) {
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduceMotion) {
-    let current = 0;
-    setInterval(() => {
-      heroLines[current].classList.remove('is-active');
-      current = (current + 1) % heroLines.length;
-      heroLines[current].classList.add('is-active');
-    }, 3200);
-  }
-}
-
 // Uma saudação discreta pra quem abre o console :)
 console.log('Oi! Se você chegou até aqui pelo console, a gente provavelmente combina. Vamos conversar? seuemail@dominio.com');

@@ -56,12 +56,10 @@
         <div class="reveal-text"><span><em>Alencar</em></span></div>
       </h1>
 
-      <!-- TROQUE/AJUSTE AS FRASES DO HERO AQUI — elas se revezam sozinhas -->
+      <!-- TROQUE/AJUSTE AS FRASES DO HERO EM js/hero-slot.js — elas se revezam sozinhas
+           e viram "caça-níquel" ao passar o mouse nos projetos abaixo -->
       <div class="hero-sub-wrap">
-        <p class="hero-sub text-body is-active">Designer multidisciplinar — e curiosa em tempo integral.</p>
-        <p class="hero-sub text-body">Transformo briefing em produto, tela e embalagem.</p>
-        <p class="hero-sub text-body">Grid organizado. Ideias, nem sempre.</p>
-        <p class="hero-sub text-body">Detalhe é o que separa "pronto" de "bom".</p>
+        <p class="hero-sub text-body" id="heroSub">Designer multidisciplinar — e curiosa em tempo integral.</p>
       </div>
     </section>
 
@@ -83,11 +81,23 @@
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info"><span class="project-title">Café Torra</span><span class="project-category">Embalagem</span></div>
       </a>
-      <a href="project-template.html" class="project-card" data-category="produto">
+      <a href="project-template.html" class="project-card" data-category="digital">
         <span class="card-index">03</span>
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+        <div class="project-info"><span class="project-title">Aurora App</span><span class="project-category">Digital</span></div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="produto">
+        <span class="card-index">04</span>
         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Luminária X" class="project-image">
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info"><span class="project-title">Luminária X</span><span class="project-category">Produto</span></div>
+      </a>
+      <a href="project-template.html" class="project-card" data-category="branding">
+        <span class="card-index">05</span>
+        <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
+        <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
+        <div class="project-info"><span class="project-title">Nébula</span><span class="project-category">Branding</span></div>
       </a>
     </section>
 
@@ -168,6 +178,6 @@
   <script src="js/main.js"></script>
   <script src="js/ripple.js"></script>
   <script src="js/animations.js"></script>
-  <script src="js/marquee-slot.js"></script>
+  <script src="js/hero-slot.js"></script>
 </body>
 </html>

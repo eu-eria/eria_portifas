@@ -4,7 +4,7 @@
 :root {
   --bg-color: #f4f4f0;
   --text-color: #161514;
-  --accent-color: #c4432b;
+  --accent-color: #D6244E;
   --border-color: #161514;
   --font-display: 'Unbounded', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -13,13 +13,13 @@
 :root[data-theme="dark"] {
   --bg-color: #1a1a1a;
   --text-color: #f4f4f0;
-  --accent-color: #e8714f;
+  --accent-color: #FF4D73;
   --border-color: #f4f4f0;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-color: #1a1a1a; --text-color: #f4f4f0; --accent-color: #e8714f; --border-color: #f4f4f0;
+    --bg-color: #1a1a1a; --text-color: #f4f4f0; --accent-color: #FF4D73; --border-color: #f4f4f0;
     color-scheme: dark;
   }
 }
@@ -121,14 +121,21 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
   background: var(--accent-color); border-radius: 50%; transform: translate(-50%, -50%);
 }
 
-/* Subtítulo do hero: troca de frase animada */
-.hero-sub-wrap { position: relative; max-width: 46ch; min-height: 3.4em; }
+/* Subtítulo do hero: frases se revezando sozinhas, e vira "caça-níquel"
+   quando o mouse passa em um card de projeto (mostra a categoria dele) */
+.hero-sub-wrap { position: relative; max-width: 46ch; min-height: 2.2em; }
 .hero-sub {
-  position: absolute; top: 0; left: 0;
-  opacity: 0; transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.hero-sub.is-active { position: relative; opacity: 1; transform: translateY(0); }
+.hero-sub.is-fading { opacity: 0; transform: translateY(8px); }
+.hero-sub.is-category {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-color);
+}
 
 /* ============================================
    GRIDS
@@ -155,11 +162,11 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .b-2x1 { grid-column: span 2; }
 .b-1x2 { grid-row: span 2; }
 
-/* Teaser bento assimétrico (Home) */
+/* Teaser bento assimétrico (Home) — 5 projetos */
 .teaser-bento {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  grid-template-rows: repeat(2, 210px);
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-rows: repeat(2, 200px);
   gap: 0;
 }
 .teaser-bento .t-tall { grid-row: span 2; }
@@ -181,20 +188,42 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .project-card:hover .card-reveal { transform: translateY(0); }
 .project-card:hover .card-reveal .arrow { transform: translateX(4px); }
 
+/* PIRAS — mural de polaroides: cada card com leve rotação, endireita no hover */
+.piras-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 1.75rem;
+  padding: 1.5rem 2rem 4rem;
+}
 .pira-card {
-  position: relative; overflow: hidden;
-  border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
-  background: var(--bg-color); cursor: pointer;
+  position: relative;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 0.6rem 1rem;
+  box-shadow: 5px 5px 0 var(--border-color);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
-.grid-3 .pira-card:nth-child(3n) { border-right: none; }
-.pira-caption {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
-  transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  background: var(--text-color); color: var(--bg-color);
-  font-family: var(--font-body); font-weight: 600; font-size: 0.75rem; padding: 0.85rem 1.1rem;
+.pira-card .project-image { aspect-ratio: 4/5; display: block; overflow: hidden; }
+.pira-card .pira-caption {
+  display: block;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.75rem;
+  color: var(--text-color); padding-top: 0.75rem;
 }
-.pira-card:hover .pira-caption { transform: translateY(0); }
-.pira-card:hover .project-image { transform: scale(1.06); }
+.pira-card:nth-child(9n+1) { transform: rotate(-2.5deg); }
+.pira-card:nth-child(9n+2) { transform: rotate(1.5deg); }
+.pira-card:nth-child(9n+3) { transform: rotate(-1deg); }
+.pira-card:nth-child(9n+4) { transform: rotate(2deg); }
+.pira-card:nth-child(9n+5) { transform: rotate(-2deg); }
+.pira-card:nth-child(9n+6) { transform: rotate(1deg); }
+.pira-card:nth-child(9n+7) { transform: rotate(-1.5deg); }
+.pira-card:nth-child(9n+8) { transform: rotate(2.5deg); }
+.pira-card:nth-child(9n+9) { transform: rotate(-0.5deg); }
+.pira-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.04) !important;
+  box-shadow: 8px 8px 0 var(--accent-color);
+  z-index: 2;
+}
 
 .project-card {
   border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
@@ -238,18 +267,18 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .title-word { display: inline-block; transition: opacity 0.25s ease, transform 0.25s ease; }
 .title-word.is-swapping { opacity: 0; transform: translateY(8px); }
 .title-star {
-  position: absolute; top: -0.1em; right: -0.75em;
-  width: 0.5em; height: 0.5em;
+  position: absolute; top: -0.05em; right: -0.05em;
+  width: 0.4em; height: 0.4em;
   opacity: 0; transition: opacity 0.3s ease;
   pointer-events: none;
 }
-.title-star svg { width: 100%; height: 100%; animation: spin-medium 5s linear infinite; }
+.title-star svg { width: 100%; height: 100%; animation: spin-medium 5s linear infinite; transform-box: fill-box; transform-origin: center; }
 .is-piras .title-star { opacity: 1; }
 
 /* ============================================
    FAIXAS (MARQUEE) + slot-machine ao passar nos cards
    ============================================ */
-.marquee { overflow: hidden; padding: 1.75rem 0; position: relative; }
+.marquee { overflow: hidden; padding: 1.75rem 0; }
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 26s linear infinite; }
 .marquee-group {
   display: flex; align-items: center; gap: 2.25rem; padding-right: 2.25rem;
@@ -258,19 +287,6 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 }
 .sep { color: var(--accent-color); display: inline-flex; width: 0.5em; height: 0.5em; }
 .sep svg { width: 100%; height: 100%; }
-
-.marquee.is-spinning .marquee-track { animation-play-state: paused; }
-.slot-overlay {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  background: var(--bg-color); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 5;
-}
-.marquee.is-spinning .slot-overlay { opacity: 1; }
-.slot-word {
-  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-  font-size: clamp(1.25rem, 2.5vw, 2rem); color: var(--accent-color);
-  display: inline-block; transform: scale(1); transition: transform 0.15s ease;
-}
-.slot-word.landed { animation: slot-pop 0.35s ease; }
 
 /* ============================================
    SOBRE (com espaço pra foto/gif)
