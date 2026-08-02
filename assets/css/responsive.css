@@ -44,6 +44,9 @@
 
   .filter-bar { flex-wrap: wrap; padding: 1.25rem; }
   .lightbox { padding: 1.25rem; }
+  .lightbox-nav { width: 38px; height: 38px; font-size: 1.3rem; }
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
 }
 
 @media (max-width: 420px) {
