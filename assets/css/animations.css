@@ -2,6 +2,20 @@
 .reveal-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
 .reveal-text span { display: block; transform: translateY(110%); }
 
+/* HERO — letras entram de baixo, uma a uma (GSAP leva até y:0).
+   Só esconde se houver JS; sem JS o nome já aparece no lugar. */
+.js .hero-name .hl { transform: translateY(118%); }
+
+/* Pulso do "disponível" e balanço da seta de scroll */
+@keyframes avail-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+@keyframes cue-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
 /* FAIXA / MARQUEE */
 @keyframes marquee-scroll { to { transform: translateX(-50%); } }
 
@@ -25,6 +39,8 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
   .reveal-text span { transform: none; }
+  .js .hero-name .hl { transform: none; }
+  .avail-dot, .cue-arrow { animation: none; }
   .project-image { transition: none; }
   .spin-badge svg, .title-star svg { animation: none; }
   .click-ripple { animation: none; display: none; }

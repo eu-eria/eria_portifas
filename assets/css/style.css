@@ -6,8 +6,8 @@
   --text-color: #161514;
   --accent-color: #D6244E;
   --border-color: #161514;
-  --font-display: 'Unbounded', 'Space Grotesk', -apple-system, sans-serif;
-  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: 'Stack Sans Notch', 'Stack Sans Text', -apple-system, sans-serif;
+  --font-body: 'Stack Sans Text', 'Stack Sans Notch', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
@@ -100,14 +100,85 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ============================================
-   HERO (sem divisórias entre dobras)
+   HERO — a prancheta da Éria
+   Tela cheia, nome de ponta a ponta, letras vivas
+   (o peso variável reage ao cursor — js/hero-weight.js)
    ============================================ */
 .hero {
-  padding: 11rem 2rem 5rem 2rem;
-  min-height: 82vh;
-  display: flex; flex-direction: column; justify-content: flex-end; gap: 1.25rem;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 6.5rem 2rem 1.75rem;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
   position: relative;
+  /* grade de pontos bem sutil: o hero como artboard */
+  background-image: radial-gradient(color-mix(in srgb, var(--border-color) 13%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: center;
 }
+
+/* Marcas de registro nos cantos (vernáculo de gráfica/print) */
+.crop { position: absolute; width: 14px; height: 14px; opacity: 0.5; pointer-events: none; }
+.crop::before, .crop::after { content: ""; position: absolute; background: var(--border-color); }
+.crop::before { width: 100%; height: 1px; top: 50%; left: 0; }
+.crop::after { height: 100%; width: 1px; left: 50%; top: 0; }
+.crop-tl { top: 4.75rem; left: 1rem; }
+.crop-tr { top: 4.75rem; right: 1rem; }
+.crop-bl { bottom: 1rem; left: 1rem; }
+.crop-br { bottom: 1rem; right: 1rem; }
+
+/* Linha de metadados no topo do hero */
+.hero-topline { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.hero-meta {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.72rem;
+  letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85;
+}
+.hero-avail { display: inline-flex; align-items: center; gap: 0.55em; color: var(--accent-color); opacity: 1; }
+.avail-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent-color);
+  animation: avail-pulse 2s ease-in-out infinite;
+}
+
+/* O nome: cada linha justificada de ponta a ponta, cada letra um eixo vivo */
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.9rem, 13.5vw, 13.5rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+  display: flex; flex-direction: column; gap: 0.015em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.hero-line {
+  display: flex; justify-content: space-between;
+  overflow: hidden;
+  /* folga interna pra não decepar o acento do É nem a base das letras
+     (métricas da fonte: ascent 1em, tinta do acento chega a 0.9em) */
+  padding: 0.12em 0 0.05em;
+  margin: -0.12em 0 -0.05em;
+}
+.hero-line-top { font-size: 1.3em; }
+.hero-line-accent { color: var(--accent-color); }
+.hl {
+  display: inline-block;
+  font-weight: 620;
+  font-variation-settings: 'wght' var(--w, 620);
+  translate: 0 var(--ty, 0px);
+  will-change: transform, translate, font-variation-settings;
+}
+
+/* Rodapé do hero: subtítulo rotativo + local + convite pro scroll */
+.hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+.hero-side { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; text-align: right; }
+.scroll-cue {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.78rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.35em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.scroll-cue:hover { color: var(--accent-color); border-color: var(--accent-color); }
+.cue-arrow { display: inline-block; animation: cue-bob 1.6s ease-in-out infinite; }
 
 /* Legenda giratória (fica trocada de lugar: agora usada no contato) */
 .spin-badge { position: absolute; width: 108px; height: 108px; pointer-events: none; }

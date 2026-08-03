@@ -17,10 +17,23 @@ if (typeof gsap !== 'undefined') {
     // Quem prefere menos movimento vê tudo já no lugar
     if (reduceMotion) {
       gsap.set('.reveal-text span', { y: 0 });
+      gsap.set('.hero-name .hl', { y: 0 });
       return;
     }
 
-    // Animação de entrada da tipografia (hero)
+    // Animação de entrada da tipografia (hero da home: letra por letra)
+    const heroLetters = document.querySelectorAll('.hero-name .hl');
+    if (heroLetters.length > 0) {
+      gsap.to(heroLetters, {
+        y: 0,
+        duration: 1.1,
+        ease: 'power4.out',
+        stagger: 0.05,
+        delay: 0.15,
+      });
+    }
+
+    // (demais páginas ainda usam .reveal-text)
     const revealTexts = document.querySelectorAll('.reveal-text span');
     if (revealTexts.length > 0) {
       gsap.to(revealTexts, {
@@ -71,8 +84,9 @@ if (typeof gsap !== 'undefined') {
 
     // Saída do hero: o nome desliza de leve ao rolar
     const hero = document.querySelector('.hero');
-    if (hero && hero.querySelector('.h1-brutal')) {
-      gsap.to(hero.querySelector('.h1-brutal'), {
+    const heroTitle = hero && (hero.querySelector('.hero-name') || hero.querySelector('.h1-brutal'));
+    if (heroTitle) {
+      gsap.to(heroTitle, {
         xPercent: -6,
         opacity: 0.35,
         ease: 'none',

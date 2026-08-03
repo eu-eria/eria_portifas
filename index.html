@@ -13,12 +13,13 @@
         var t = localStorage.getItem('theme');
         if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.classList.add('js');
       } catch (e) {}
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
@@ -49,22 +50,41 @@
   </header>
 
   <main class="main-wrapper">
-    <!-- DOBRA 1 — HERO -->
-    <section class="hero">
-      <h1 class="h1-brutal">
-        <div class="reveal-text"><span>Éria</span></div>
-        <div class="reveal-text"><span><em>Alencar</em></span></div>
+    <!-- DOBRA 1 — HERO
+         O nome é o brinquedo: cada letra da Stack Sans Notch é um eixo variável (wght 200–700).
+         Perto do cursor a letra engorda e sobe; sem interação, uma onda percorre o nome.
+         Intensidade e velocidade em js/hero-weight.js -->
+    <section class="hero" id="hero">
+      <span class="crop crop-tl" aria-hidden="true"></span>
+      <span class="crop crop-tr" aria-hidden="true"></span>
+      <span class="crop crop-bl" aria-hidden="true"></span>
+      <span class="crop crop-br" aria-hidden="true"></span>
+
+      <div class="hero-topline">
+        <span class="hero-meta">Portfólio — 2026</span>
+        <span class="hero-meta hero-avail"><span class="avail-dot" aria-hidden="true"></span>Disponível para projetos</span>
+      </div>
+
+      <h1 class="hero-name" aria-label="Éria Alencar">
+        <span class="hero-line hero-line-top" aria-hidden="true"><span class="hl">É</span><span class="hl">R</span><span class="hl">I</span><span class="hl">A</span></span>
+        <span class="hero-line hero-line-accent" aria-hidden="true"><span class="hl">A</span><span class="hl">L</span><span class="hl">E</span><span class="hl">N</span><span class="hl">C</span><span class="hl">A</span><span class="hl">R</span></span>
       </h1>
 
-      <!-- TROQUE/AJUSTE AS FRASES DO HERO EM js/hero-slot.js — elas se revezam sozinhas
-           e viram "caça-níquel" ao passar o mouse nos projetos abaixo -->
-      <div class="hero-sub-wrap">
-        <p class="hero-sub text-body" id="heroSub">Designer multidisciplinar — e curiosa em tempo integral.</p>
+      <div class="hero-foot">
+        <!-- TROQUE/AJUSTE AS FRASES DO HERO EM js/hero-slot.js — elas se revezam sozinhas
+             e viram "caça-níquel" ao passar o mouse nos projetos abaixo -->
+        <div class="hero-sub-wrap">
+          <p class="hero-sub text-body" id="heroSub">Designer multidisciplinar — e curiosa em tempo integral.</p>
+        </div>
+        <div class="hero-side">
+          <span class="hero-meta">Goiás — Brasil</span>
+          <a href="#teaser" class="scroll-cue" data-scroll-to>Ver trabalhos <span class="cue-arrow" aria-hidden="true">↓</span></a>
+        </div>
       </div>
     </section>
 
     <!-- DOBRA 2 — TEASER DE PROJETOS (bento assimétrico) -->
-    <div class="teaser-intro">
+    <div class="teaser-intro" id="teaser">
       <p class="eyebrow">Trabalhos recentes</p>
       <a href="projects.html" class="tag">Ver todos →</a>
     </div>
@@ -179,5 +199,6 @@
   <script src="assets/js/ripple.js"></script>
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/hero-slot.js"></script>
+  <script src="assets/js/hero-weight.js"></script>
 </body>
 </html>

@@ -1,4 +1,12 @@
 // ============================================
+// Se o CDN do GSAP falhar, tira a classe .js do <html>
+// pra tipografia do hero aparecer mesmo sem animação
+// ============================================
+if (typeof gsap === 'undefined') {
+  document.documentElement.classList.remove('js');
+}
+
+// ============================================
 // SMOOTH SCROLL (Lenis) — com guarda caso o CDN falhe
 // ============================================
 const lenis = (typeof Lenis !== 'undefined')
