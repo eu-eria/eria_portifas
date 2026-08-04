@@ -156,21 +156,26 @@
       </div>
     </section>
 
-    <!-- DOBRA 4 — PIRAS (mural rápido; o completo vive em projects.html)
-         Clique numa pira pra abrir o lightbox (mesmo de projects — js/navigation.js) -->
+    <!-- DOBRA 4 — PIRAS (esteira: uma linha só que gira sozinha, como as faixas
+         do site — mas essa você pode AGARRAR: arrasta pra frear, rebobinar e dar
+         peteleco com inércia. Clique abre o lightbox. Física em js/piras-belt.js) -->
     <section class="piras-home" id="piras">
       <div class="teaser-intro">
         <p class="eyebrow">Piras — sem briefing</p>
         <a href="projects.html" class="tag">Mural completo →</a>
       </div>
-      <p class="text-body piras-blurb">Estudos, testes e ideias soltas que eu faço por pura pira. Clica pra ver de perto.</p>
-      <div class="piras-grid piras-grid-home">
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-01/700/900" alt="Pira 01 — estudo de cartaz" class="project-image"><span class="pira-caption">Estudo de cartaz — tipografia</span></div>
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-02/700/900" alt="Pira 02 — paleta de cor" class="project-image"><span class="pira-caption">Exercício de paleta</span></div>
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-03/700/900" alt="Pira 03 — textura" class="project-image"><span class="pira-caption">Textura digital</span></div>
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-04/700/900" alt="Pira 04 — rótulo especulativo" class="project-image"><span class="pira-caption">Rótulo especulativo</span></div>
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-05/700/900" alt="Pira 05 — ícone" class="project-image"><span class="pira-caption">Set de ícones</span></div>
-        <div class="pira-card"><img src="https://picsum.photos/seed/pira-06/700/900" alt="Pira 06 — colagem" class="project-image"><span class="pira-caption">Colagem digital</span></div>
+      <p class="text-body piras-blurb">Estudos, testes e ideias soltas que eu faço por pura pira. A esteira anda sozinha — segura e arrasta pra fuçar, clica pra ver de perto.</p>
+      <div class="piras-belt" id="pirasBelt" aria-label="Esteira de piras — arraste para navegar">
+        <div class="piras-track">
+          <div class="belt-group">
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-01/700/900" alt="Pira 01 — estudo de cartaz" class="project-image"><span class="pira-caption">Estudo de cartaz — tipografia</span></div>
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-02/700/900" alt="Pira 02 — paleta de cor" class="project-image"><span class="pira-caption">Exercício de paleta</span></div>
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-03/700/900" alt="Pira 03 — textura" class="project-image"><span class="pira-caption">Textura digital</span></div>
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-04/700/900" alt="Pira 04 — rótulo especulativo" class="project-image"><span class="pira-caption">Rótulo especulativo</span></div>
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-05/700/900" alt="Pira 05 — ícone" class="project-image"><span class="pira-caption">Set de ícones</span></div>
+            <div class="pira-card"><img src="https://picsum.photos/seed/pira-06/700/900" alt="Pira 06 — colagem" class="project-image"><span class="pira-caption">Colagem digital</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -220,22 +225,21 @@
 
     <!-- DOBRA 7 — CONTATO -->
     <section class="contact-section" id="contato">
-      <div class="spin-badge" style="top: 0; right: 2rem;" aria-hidden="true">
-        <svg viewBox="0 0 100 100">
-          <defs>
-            <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
-          </defs>
-          <text>
-            <textPath href="#circlePath" startOffset="0%">Disponível para novos projetos ✦ Disponível para novos projetos ✦</textPath>
-          </text>
-        </svg>
-        <span class="spin-badge-dot"></span>
-      </div>
-
       <div class="grid-2" style="gap: 4rem; align-items: start;">
         <div>
           <p class="eyebrow" style="margin-bottom: 1rem;">Bora?</p>
           <h2 class="h2-brutal" style="font-size: clamp(1.6rem, 4vw, 2.8rem);">Tem um projeto em mente?</h2>
+          <div class="spin-badge" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs>
+                <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
+              </defs>
+              <text>
+                <textPath href="#circlePath" startOffset="0%">Disponível para novos projetos ✦ Disponível para novos projetos ✦</textPath>
+              </text>
+            </svg>
+            <span class="spin-badge-dot"></span>
+          </div>
           <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta a ideia. Prometo responder rápido (e sem enrolação). Ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
         </div>
         <!-- TROQUE O SEU ENDPOINT DO FORMSPREE ABAIXO -->
@@ -268,6 +272,7 @@
   <script src="assets/js/hero-slot.js"></script>
   <script src="assets/js/hero-weight.js"></script>
   <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/piras-belt.js"></script>
   <script src="assets/js/layers-nav.js"></script>
   <script src="assets/js/easter-egg.js"></script>
 </body>

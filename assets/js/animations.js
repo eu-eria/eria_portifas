@@ -60,8 +60,9 @@ if (typeof gsap !== 'undefined') {
       });
     });
 
-    // Piras e linhas de serviço também entram suavemente
+    // Piras (fora da esteira) e linhas de serviço entram suavemente
     document.querySelectorAll('.pira-card, .service-row').forEach((el) => {
+      if (el.closest('.piras-belt')) return; // os da esteira animam via container
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
@@ -73,6 +74,19 @@ if (typeof gsap !== 'undefined') {
         ease: 'power3.out',
       });
     });
+
+    // A esteira de piras entra como um bloco só
+    // (animar cada card congelaria a rotação/inclinação delas via CSS)
+    const belt = document.querySelector('.piras-belt');
+    if (belt) {
+      gsap.from(belt, {
+        scrollTrigger: { trigger: belt, start: 'top 88%' },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+    }
 
     // ==========================================
     // Parallax sutil: cada imagem do bento viaja em

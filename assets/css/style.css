@@ -175,8 +175,8 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .scroll-cue:hover { color: var(--accent-color); border-color: var(--accent-color); }
 .cue-arrow { display: inline-block; animation: cue-bob 1.6s ease-in-out infinite; }
 
-/* Legenda giratória (fica trocada de lugar: agora usada no contato) */
-.spin-badge { position: absolute; width: 108px; height: 108px; pointer-events: none; }
+/* Selo giratório — no fluxo, à esquerda, logo abaixo do título do contato */
+.spin-badge { position: relative; width: 108px; height: 108px; pointer-events: none; margin: 1.75rem 0 0.25rem; }
 .spin-badge svg { width: 100%; height: 100%; animation: spin-slow 14s linear infinite; }
 .spin-badge text {
   font-family: var(--font-body); font-weight: 600; font-size: 8.6px; letter-spacing: 0.15em;
@@ -472,8 +472,41 @@ footer a:hover { color: var(--accent-color); }
 /* ============================================
    PIRAS NA HOME (mural resumido — o completo fica em projects)
    ============================================ */
-.piras-blurb { padding: 0 2rem 1rem; max-width: 52ch; opacity: 0.85; }
-.piras-grid-home { padding-top: 0.5rem; }
+.piras-blurb { padding: 0 2rem 1rem; max-width: 56ch; opacity: 0.85; }
+
+/* Esteira: uma linha só, girando como as faixas do site — mas agarrável.
+   O arraste, a inércia e a inclinação pela velocidade vivem em js/piras-belt.js */
+.piras-belt {
+  overflow: hidden;
+  padding: 1.75rem 0 3.5rem; /* folga p/ cantos das polaroides rotacionadas + lean */
+  cursor: grab;
+  touch-action: pan-y;              /* swipe vertical continua rolando a página */
+  user-select: none;
+  -webkit-user-select: none;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.piras-belt.is-grabbing { cursor: grabbing; }
+.piras-track { display: flex; gap: 1.75rem; width: max-content; will-change: transform; }
+.belt-group { display: flex; gap: 1.75rem; flex: 0 0 auto; }
+.piras-belt .pira-card {
+  width: clamp(200px, 23vw, 300px);
+  flex: 0 0 auto;
+  /* rotação de polaroide + inclinação da esteira (definida por JS em --lean) */
+  transform: rotate(calc(var(--pira-rot, 0deg) + var(--lean, 0deg)));
+}
+.piras-belt .pira-card:nth-child(6n+1) { --pira-rot: -2deg; }
+.piras-belt .pira-card:nth-child(6n+2) { --pira-rot: 1.6deg; }
+.piras-belt .pira-card:nth-child(6n+3) { --pira-rot: -1deg; }
+.piras-belt .pira-card:nth-child(6n+4) { --pira-rot: 2.4deg; }
+.piras-belt .pira-card:nth-child(6n+5) { --pira-rot: -1.4deg; }
+.piras-belt .pira-card:nth-child(6n+6) { --pira-rot: 1deg; }
+/* Quem prefere menos movimento rola no dedo/scroll, sem esteira automática */
+.piras-belt.belt-native {
+  overflow-x: auto; cursor: default;
+  mask-image: none; -webkit-mask-image: none;
+  padding-left: 2rem; padding-right: 2rem;
+}
 
 /* ============================================
    O QUE EU FAÇO — linhas grandes; o título engorda no hover
@@ -554,10 +587,7 @@ footer a:hover { color: var(--accent-color); }
   background: var(--accent-color); border-color: var(--accent-color);
   transform: rotate(45deg);
 }
-.layer-link.is-active .layer-label {
-  opacity: 1; transform: translateX(0);
-  background: var(--accent-color); color: #ffffff;
-}
+.layer-link.is-active .layer-label { background: var(--accent-color); color: #ffffff; }
 
 /* Âncoras com folga do header fixo (fallback sem smooth scroll) */
 #hero, #teaser, #piras, #servicos, #sobre, #contato { scroll-margin-top: 70px; }

@@ -68,7 +68,7 @@
   .crop-bl, .crop-br { bottom: 0.75rem; }
 
   .about-blurb, .contact-section { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .spin-badge { position: static; margin-top: 2rem; }
+  .spin-badge { margin: 1.5rem 0 0; }
   .marquee-group { gap: 1.25rem; padding-right: 1.25rem; }
 
   .view-switch { padding: 1.25rem 1.25rem 0; }
