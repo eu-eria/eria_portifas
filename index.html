@@ -49,6 +49,19 @@
     </nav>
   </header>
 
+  <!-- SUBMENU — trilho de "camadas", como o painel de layers de um software de design:
+       cada camada é uma seção da home; a ativa acende conforme o scroll.
+       Passe o mouse pra ver os nomes. Lógica em js/layers-nav.js -->
+  <nav class="layers-panel" aria-label="Seções da página">
+    <span class="layers-title" aria-hidden="true">Camadas</span>
+    <a href="#hero" class="layer-link is-active" data-scroll-to><span class="layer-label">Início</span><span class="layer-chip" aria-hidden="true"></span></a>
+    <a href="#teaser" class="layer-link" data-scroll-to><span class="layer-label">Trabalhos</span><span class="layer-chip" aria-hidden="true"></span></a>
+    <a href="#piras" class="layer-link" data-scroll-to><span class="layer-label">Piras</span><span class="layer-chip" aria-hidden="true"></span></a>
+    <a href="#servicos" class="layer-link" data-scroll-to><span class="layer-label">Serviços</span><span class="layer-chip" aria-hidden="true"></span></a>
+    <a href="#sobre" class="layer-link" data-scroll-to><span class="layer-label">Sobre</span><span class="layer-chip" aria-hidden="true"></span></a>
+    <a href="#contato" class="layer-link" data-scroll-to><span class="layer-label">Contato</span><span class="layer-chip" aria-hidden="true"></span></a>
+  </nav>
+
   <main class="main-wrapper">
     <!-- DOBRA 1 — HERO
          O nome é o brinquedo: cada letra da Stack Sans Notch é um eixo variável (wght 200–700).
@@ -59,11 +72,6 @@
       <span class="crop crop-tr" aria-hidden="true"></span>
       <span class="crop crop-bl" aria-hidden="true"></span>
       <span class="crop crop-br" aria-hidden="true"></span>
-
-      <div class="hero-topline">
-        <span class="hero-meta">Portfólio — 2026</span>
-        <span class="hero-meta hero-avail"><span class="avail-dot" aria-hidden="true"></span>Disponível para projetos</span>
-      </div>
 
       <h1 class="hero-name" aria-label="Éria Alencar">
         <span class="hero-line hero-line-top" aria-hidden="true"><span class="hl">É</span><span class="hl">R</span><span class="hl">I</span><span class="hl">A</span></span>
@@ -83,10 +91,10 @@
       </div>
     </section>
 
-    <!-- DOBRA 2 — TEASER DE PROJETOS (bento assimétrico) -->
+    <!-- DOBRA 2 — TEASER DE PROJETOS (bento assimétrico: alto, largo e um tile de CTA) -->
     <div class="teaser-intro" id="teaser">
       <p class="eyebrow">Trabalhos recentes</p>
-      <a href="projects.html" class="tag">Ver todos →</a>
+      <span class="bento-count">(05)</span>
     </div>
     <section class="teaser-bento">
       <a href="project-template.html" class="project-card t-tall" data-category="ui-ux">
@@ -101,9 +109,9 @@
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info"><span class="project-title">Café Torra</span><span class="project-category">Embalagem</span></div>
       </a>
-      <a href="project-template.html" class="project-card" data-category="digital">
+      <a href="project-template.html" class="project-card t-wide" data-category="digital">
         <span class="card-index">03</span>
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop" alt="Capa do projeto Aurora App" class="project-image">
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info"><span class="project-title">Aurora App</span><span class="project-category">Digital</span></div>
       </a>
@@ -118,6 +126,11 @@
         <img src="https://picsum.photos/seed/eria-nebula/800/1000" alt="Capa do projeto Nébula" class="project-image">
         <span class="card-reveal">Ver projeto <span class="arrow">→</span></span>
         <div class="project-info"><span class="project-title">Nébula</span><span class="project-category">Branding</span></div>
+      </a>
+      <a href="projects.html" class="project-card cta-card" aria-label="Ver todos os projetos">
+        <span class="cta-kicker">E tem mais</span>
+        <span class="cta-big">Ver<br>todos</span>
+        <span class="cta-foot"><span class="cta-count">Projetos + piras</span><span class="cta-arrow" aria-hidden="true">↗</span></span>
       </a>
     </section>
 
@@ -143,8 +156,57 @@
       </div>
     </section>
 
-    <!-- DOBRA 4 — SOBRE (breve, com espaço pra foto/gif) -->
-    <section class="about-blurb">
+    <!-- DOBRA 4 — PIRAS (mural rápido; o completo vive em projects.html)
+         Clique numa pira pra abrir o lightbox (mesmo de projects — js/navigation.js) -->
+    <section class="piras-home" id="piras">
+      <div class="teaser-intro">
+        <p class="eyebrow">Piras — sem briefing</p>
+        <a href="projects.html" class="tag">Mural completo →</a>
+      </div>
+      <p class="text-body piras-blurb">Estudos, testes e ideias soltas que eu faço por pura pira. Clica pra ver de perto.</p>
+      <div class="piras-grid piras-grid-home">
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-01/700/900" alt="Pira 01 — estudo de cartaz" class="project-image"><span class="pira-caption">Estudo de cartaz — tipografia</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-02/700/900" alt="Pira 02 — paleta de cor" class="project-image"><span class="pira-caption">Exercício de paleta</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-03/700/900" alt="Pira 03 — textura" class="project-image"><span class="pira-caption">Textura digital</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-04/700/900" alt="Pira 04 — rótulo especulativo" class="project-image"><span class="pira-caption">Rótulo especulativo</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-05/700/900" alt="Pira 05 — ícone" class="project-image"><span class="pira-caption">Set de ícones</span></div>
+        <div class="pira-card"><img src="https://picsum.photos/seed/pira-06/700/900" alt="Pira 06 — colagem" class="project-image"><span class="pira-caption">Colagem digital</span></div>
+      </div>
+    </section>
+
+    <!-- DOBRA 5 — O QUE EU FAÇO
+         Passe o mouse numa linha: o título engorda (mesmo eixo variável do nome no hero) -->
+    <section class="services" id="servicos">
+      <div class="teaser-intro">
+        <p class="eyebrow">O que eu faço</p>
+        <span class="bento-count">4 frentes</span>
+      </div>
+      <ul class="service-list">
+        <li class="service-row">
+          <h3 class="service-name">Identidade &amp; branding</h3>
+          <p class="service-desc">Sistemas de marca com lógica e alma — do símbolo ao tom de voz, prontos pra viver fora do slide.</p>
+          <span class="service-tags"><span>Logo</span><span>Naming</span><span>Guidelines</span></span>
+        </li>
+        <li class="service-row">
+          <h3 class="service-name">UI &amp; produto digital</h3>
+          <p class="service-desc">Fluxos, telas e protótipos que respeitam quem usa. Bonito, pra mim, é o que funciona sem manual.</p>
+          <span class="service-tags"><span>UX</span><span>UI</span><span>Protótipo</span></span>
+        </li>
+        <li class="service-row">
+          <h3 class="service-name">Embalagem &amp; print</h3>
+          <p class="service-desc">Do molde da caixa ao acabamento: design que você segura na mão — e guarda depois de abrir.</p>
+          <span class="service-tags"><span>Rótulo</span><span>Caixa</span><span>Editorial</span></span>
+        </li>
+        <li class="service-row">
+          <h3 class="service-name">Direção de arte</h3>
+          <p class="service-desc">Conceito e consistência pra campanhas, conteúdo e tudo que precisar de um olho fino por perto.</p>
+          <span class="service-tags"><span>Campanha</span><span>Conteúdo</span><span>Foto</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- DOBRA 6 — SOBRE (breve, com espaço pra foto/gif) -->
+    <section class="about-blurb" id="sobre">
       <div class="grid-2">
         <div>
           <p class="eyebrow">Sobre mim</p>
@@ -156,8 +218,8 @@
       </div>
     </section>
 
-    <!-- DOBRA 5 — CONTATO -->
-    <section class="contact-section">
+    <!-- DOBRA 7 — CONTATO -->
+    <section class="contact-section" id="contato">
       <div class="spin-badge" style="top: 0; right: 2rem;" aria-hidden="true">
         <svg viewBox="0 0 100 100">
           <defs>
@@ -189,7 +251,12 @@
 
   <footer>
     <a href="mailto:seuemail@dominio.com">Vamos Conversar ↗</a>
-    <span class="footer-note">© 2026 Éria Alencar — feito à mão em Goiás.</span>
+    <div class="footer-right">
+      <!-- EASTER EGG: clica no ;] e vê o que acontece (js/easter-egg.js).
+           Dica: quem insiste cinco vezes ganha um recado. -->
+      <button type="button" class="tag wink" id="wink" aria-label="Um segredinho">;]</button>
+      <span class="footer-note" id="footerNote">© 2026 Éria Alencar — feito à mão em Goiás.</span>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
@@ -200,5 +267,8 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/hero-slot.js"></script>
   <script src="assets/js/hero-weight.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/layers-nav.js"></script>
+  <script src="assets/js/easter-egg.js"></script>
 </body>
 </html>

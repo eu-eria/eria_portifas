@@ -126,30 +126,25 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .crop-bl { bottom: 1rem; left: 1rem; }
 .crop-br { bottom: 1rem; right: 1rem; }
 
-/* Linha de metadados no topo do hero */
-.hero-topline { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+/* Linha de metadados fina (usada no rodapé do hero) */
 .hero-meta {
   font-family: var(--font-body); font-weight: 600; font-size: 0.72rem;
   letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85;
 }
-.hero-avail { display: inline-flex; align-items: center; gap: 0.55em; color: var(--accent-color); opacity: 1; }
-.avail-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--accent-color);
-  animation: avail-pulse 2s ease-in-out infinite;
-}
 
-/* O nome: cada linha justificada de ponta a ponta, cada letra um eixo vivo */
+/* O nome: alinhado à esquerda, centrado na vertical, cada letra um eixo vivo */
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(2.9rem, 13.5vw, 13.5rem);
+  font-size: clamp(2.9rem, 15vw, 15rem);
   line-height: 0.94;
   text-transform: uppercase;
   display: flex; flex-direction: column; gap: 0.015em;
+  margin-block: auto;
   user-select: none;
   -webkit-user-select: none;
 }
 .hero-line {
-  display: flex; justify-content: space-between;
+  display: flex; justify-content: flex-start;
   overflow: hidden;
   /* folga interna pra não decepar o acento do É nem a base das letras
      (métricas da fonte: ascent 1em, tinta do acento chega a 0.9em) */
@@ -233,14 +228,45 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .b-2x1 { grid-column: span 2; }
 .b-1x2 { grid-row: span 2; }
 
-/* Teaser bento assimétrico (Home) — 5 projetos */
+/* Teaser bento assimétrico (Home) — alto + largo + 5 projetos + tile de CTA */
 .teaser-bento {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  grid-template-rows: repeat(2, 200px);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 230px);
   gap: 0;
 }
 .teaser-bento .t-tall { grid-row: span 2; }
+.teaser-bento .t-wide { grid-column: span 2; }
+
+/* Tile de CTA dentro do bento */
+.project-card.cta-card {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: var(--accent-color); color: #ffffff;
+}
+.cta-kicker {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.7rem;
+  letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85;
+}
+.cta-big {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 620;
+  font-variation-settings: 'wght' 620;
+  text-transform: uppercase; line-height: 0.95;
+  transition: font-variation-settings 0.35s ease;
+}
+.cta-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.cta-count {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.7rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid #ffffff; padding: 0.4rem 0.6rem;
+}
+.cta-arrow { font-family: var(--font-display); font-size: 2rem; line-height: 1; transition: transform 0.3s ease; }
+.project-card.cta-card:hover { background: var(--text-color); color: var(--bg-color); }
+.project-card.cta-card:hover .cta-big { font-variation-settings: 'wght' 700; }
+.project-card.cta-card:hover .cta-arrow { transform: translate(4px, -4px); }
+.project-card.cta-card:hover .cta-count { border-color: var(--bg-color); }
 
 .card-index {
   position: absolute; top: 0.85rem; left: 0.85rem; z-index: 3;
@@ -442,6 +468,112 @@ footer a:hover { color: var(--accent-color); }
   font-family: var(--font-body); font-weight: 600; font-size: 0.75rem;
   color: #f4f4f0; letter-spacing: 0.04em;
 }
+
+/* ============================================
+   PIRAS NA HOME (mural resumido — o completo fica em projects)
+   ============================================ */
+.piras-blurb { padding: 0 2rem 1rem; max-width: 52ch; opacity: 0.85; }
+.piras-grid-home { padding-top: 0.5rem; }
+
+/* ============================================
+   O QUE EU FAÇO — linhas grandes; o título engorda no hover
+   (mesmo eixo variável do nome no hero)
+   ============================================ */
+.services { padding-bottom: clamp(2rem, 6vh, 4rem); }
+.service-list { border-top: 1px solid var(--border-color); }
+.service-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) auto;
+  gap: 1rem 2.5rem;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.service-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-weight: 430;
+  font-variation-settings: 'wght' 430;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: font-variation-settings 0.4s ease, color 0.2s ease;
+}
+.service-desc { font-size: clamp(0.95rem, 1.2vw, 1.05rem); line-height: 1.5; max-width: 44ch; }
+.service-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+.service-tags span {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.65rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid var(--border-color); padding: 0.35rem 0.55rem; white-space: nowrap;
+  transition: border-color 0.2s ease;
+}
+.service-row:hover { background: var(--text-color); color: var(--bg-color); }
+.service-row:hover .service-name { font-variation-settings: 'wght' 700; color: var(--accent-color); }
+.service-row:hover .service-tags span { border-color: var(--bg-color); }
+
+/* ============================================
+   PAINEL DE CAMADAS — submenu fixo (âncoras das seções)
+   Trilho discreto à direita; nomes aparecem no hover,
+   e o da seção ativa fica sempre visível.
+   ============================================ */
+.layers-panel {
+  position: fixed; right: 1.1rem; top: 50%; transform: translateY(-50%);
+  z-index: 90;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.55rem;
+}
+.layers-title {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.58rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  writing-mode: vertical-rl; opacity: 0.45; margin-bottom: 0.35rem;
+  pointer-events: none;
+}
+.layer-link {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.1rem 0;
+}
+.layer-chip {
+  width: 11px; height: 11px; flex: 0 0 auto;
+  border: 1.5px solid var(--border-color);
+  background: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.layer-label {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.68rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--text-color); color: var(--bg-color);
+  padding: 0.35em 0.6em; white-space: nowrap;
+  opacity: 0; transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  pointer-events: none;
+}
+.layers-panel:hover .layer-label,
+.layer-link:focus-visible .layer-label { opacity: 1; transform: translateX(0); }
+.layer-link:hover .layer-chip { background: var(--text-color); }
+.layer-link.is-active .layer-chip {
+  background: var(--accent-color); border-color: var(--accent-color);
+  transform: rotate(45deg);
+}
+.layer-link.is-active .layer-label {
+  opacity: 1; transform: translateX(0);
+  background: var(--accent-color); color: #ffffff;
+}
+
+/* Âncoras com folga do header fixo (fallback sem smooth scroll) */
+#hero, #teaser, #piras, #servicos, #sobre, #contato { scroll-margin-top: 70px; }
+
+/* ============================================
+   EASTER EGG — ;] no footer (chuva de estrelas em js/easter-egg.js)
+   ============================================ */
+.footer-right { display: flex; align-items: center; gap: 0.9rem; }
+button.wink { cursor: pointer; font-size: 0.8rem; }
+.footer-note { transition: opacity 0.25s ease, transform 0.25s ease; }
+.footer-note.is-fading { opacity: 0; transform: translateY(6px); }
+.egg-star {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  pointer-events: none; will-change: transform, opacity;
+}
+.egg-star svg { display: block; width: 100%; height: 100%; }
 
 /* ============================================
    CLIQUE — pequeno "ripple" ao clicar (cursor padrão do sistema)

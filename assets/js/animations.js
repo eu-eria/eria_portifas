@@ -60,6 +60,20 @@ if (typeof gsap !== 'undefined') {
       });
     });
 
+    // Piras e linhas de serviço também entram suavemente
+    document.querySelectorAll('.pira-card, .service-row').forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+      });
+    });
+
     // ==========================================
     // Parallax sutil: cada imagem do bento viaja em
     // velocidade própria enquanto o card passa pela tela

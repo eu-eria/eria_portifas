@@ -6,11 +6,7 @@
    Só esconde se houver JS; sem JS o nome já aparece no lugar. */
 .js .hero-name .hl { transform: translateY(118%); }
 
-/* Pulso do "disponível" e balanço da seta de scroll */
-@keyframes avail-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.75); }
-}
+/* Balanço da seta de scroll */
 @keyframes cue-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
@@ -40,7 +36,8 @@
   .marquee-track { animation: none; }
   .reveal-text span { transform: none; }
   .js .hero-name .hl { transform: none; }
-  .avail-dot, .cue-arrow { animation: none; }
+  .cue-arrow { animation: none; }
+  .service-name, .cta-big { transition: none; }
   .project-image { transition: none; }
   .spin-badge svg, .title-star svg { animation: none; }
   .click-ripple { animation: none; display: none; }
