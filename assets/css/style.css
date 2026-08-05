@@ -175,7 +175,79 @@ a.tag:hover, button.tag:hover { background: var(--accent-color); color: #ffffff;
 .scroll-cue:hover { color: var(--accent-color); border-color: var(--accent-color); }
 .cue-arrow { display: inline-block; animation: cue-bob 1.6s ease-in-out infinite; }
 
-/* Selo giratório — no fluxo, à esquerda, logo abaixo do título do contato */
+/* ============================================
+   ;] EM 3D — o wink da marca como objeto girando no hero
+   Sem three.js: a "profundidade" são fatias do mesmo glifo
+   empilhadas no eixo Z (clonadas em js/hero-wink.js).
+   Truque de letreiro de gráfica, só que em CSS.
+   ============================================ */
+.wink3d {
+  /* ------- calibragem ------- */
+  --w3d-size: clamp(4.5rem, 11vw, 11rem);  /* tamanho do glifo */
+  --w3d-thickness: 0.006;                  /* espessura de cada fatia (× tamanho) */
+  --w3d-front: var(--accent-color);        /* cor das faces (frente e verso) */
+  --w3d-back: #0d0b0a;                     /* cor do "miolo" da extrusão */
+  /* -------------------------- */
+
+  position: absolute;
+  top: clamp(6.5rem, 20vh, 13rem);
+  right: clamp(2.5rem, 7vw, 7rem);   /* folga pro painel de camadas, que fica colado na direita */
+  width: calc(var(--w3d-size) * 1.5);
+  height: calc(var(--w3d-size) * 1.5);
+  perspective: 900px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  animation: w3d-float 6s ease-in-out infinite;
+}
+:root[data-theme="dark"] .wink3d { --w3d-back: #2b1016; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wink3d { --w3d-back: #2b1016; }
+}
+
+/* Camada de inclinação: reage ao cursor (js/hero-wink.js) */
+.wink3d-tilt {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--w3d-tilt-x, -7deg)) rotateY(var(--w3d-tilt-y, 0deg));
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Camada do giro contínuo */
+.wink3d-stage {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  animation: w3d-spin 9s linear infinite;
+}
+
+/* Cada fatia — a da frente fica em Z=0, as demais recuam */
+.wink3d-face {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: var(--w3d-size);
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--w3d-front);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+/* Miolo: escurece progressivamente pra dar a sensação de luz numa face só */
+.wink3d-face.is-depth {
+  color: var(--w3d-back); /* fallback */
+  color: color-mix(in srgb, var(--w3d-front), var(--w3d-back) calc(var(--t, 1) * 100%));
+  backface-visibility: visible;
+  transform: translateZ(calc(var(--i) * var(--w3d-size) * var(--w3d-thickness) * -1));
+}
+/* Verso: espelhado, pro ;] continuar legível quando o objeto mostra as costas */
+.wink3d-face.is-back {
+  color: var(--w3d-front);
+  transform: translateZ(calc(var(--i) * var(--w3d-size) * var(--w3d-thickness) * -1)) rotateY(180deg);
+}
+
+/* Selo giratório — no fluxo, à esquerda, logo abaixo do texto de apoio do contato */
 .spin-badge { position: relative; width: 108px; height: 108px; pointer-events: none; margin: 1.75rem 0 0.25rem; }
 .spin-badge svg { width: 100%; height: 100%; animation: spin-slow 14s linear infinite; }
 .spin-badge text {

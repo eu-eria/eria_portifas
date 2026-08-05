@@ -78,6 +78,17 @@
         <span class="hero-line hero-line-accent" aria-hidden="true"><span class="hl">A</span><span class="hl">L</span><span class="hl">E</span><span class="hl">N</span><span class="hl">C</span><span class="hl">A</span><span class="hl">R</span></span>
       </h1>
 
+      <!-- ;] EM 3D — a assinatura da marca virou objeto: extrusão de texto
+           (fatias empilhadas no eixo Z, montadas em js/hero-wink.js) girando sozinha.
+           Perto do cursor ele inclina. Tamanho, giro e profundidade no CSS (.wink3d). -->
+      <div class="wink3d" aria-hidden="true">
+        <div class="wink3d-tilt">
+          <div class="wink3d-stage">
+            <span class="wink3d-face">;]</span>
+          </div>
+        </div>
+      </div>
+
       <div class="hero-foot">
         <!-- TROQUE/AJUSTE AS FRASES DO HERO EM js/hero-slot.js — elas se revezam sozinhas
              e viram "caça-níquel" ao passar o mouse nos projetos abaixo -->
@@ -229,18 +240,19 @@
         <div>
           <p class="eyebrow" style="margin-bottom: 1rem;">Bora?</p>
           <h2 class="h2-brutal" style="font-size: clamp(1.6rem, 4vw, 2.8rem);">Tem um projeto em mente?</h2>
+          <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta a ideia. Prometo responder rápido (e sem enrolação). Ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
           <div class="spin-badge" aria-hidden="true">
             <svg viewBox="0 0 100 100">
               <defs>
                 <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
               </defs>
               <text>
-                <textPath href="#circlePath" startOffset="0%">Disponível para novos projetos ✦ Disponível para novos projetos ✦</textPath>
+                <!-- textLength distribui o texto na circunferência exata do círculo (238,8) -->
+                <textPath href="#circlePath" startOffset="0%" textLength="232" lengthAdjust="spacing">Disponível para novos projetos ✦</textPath>
               </text>
             </svg>
             <span class="spin-badge-dot"></span>
           </div>
-          <p class="text-body" style="margin-top: 1.5rem; max-width: 34ch;">Me conta a ideia. Prometo responder rápido (e sem enrolação). Ou direto no <a href="mailto:seuemail@dominio.com" style="text-decoration: underline;">e-mail</a>.</p>
         </div>
         <!-- TROQUE O SEU ENDPOINT DO FORMSPREE ABAIXO -->
         <form action="https://formspree.io/f/seu-endpoint-aqui" method="POST" class="contact-form">
@@ -271,6 +283,7 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/hero-slot.js"></script>
   <script src="assets/js/hero-weight.js"></script>
+  <script src="assets/js/hero-wink.js"></script>
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/piras-belt.js"></script>
   <script src="assets/js/layers-nav.js"></script>

@@ -63,6 +63,13 @@
   .hero-name { font-size: clamp(2.4rem, 19vw, 7.5rem); }
   .hero-foot { flex-direction: column; align-items: stretch; gap: 1.5rem; }
   .hero-side { flex-direction: row; align-items: center; justify-content: space-between; text-align: left; }
+  /* No celular o ;] 3D sai do canto e entra no fluxo, encostado à direita */
+  .wink3d {
+    --w3d-size: clamp(3rem, 15vw, 5rem);
+    position: static; align-self: flex-end;
+    width: calc(var(--w3d-size) * 1.4); height: calc(var(--w3d-size) * 1.4);
+    margin: 0.25rem 0 -0.25rem; perspective: 620px;
+  }
   .crop { width: 10px; height: 10px; }
   .crop-tl, .crop-tr { top: 4.5rem; }
   .crop-bl, .crop-br { bottom: 0.75rem; }

@@ -15,6 +15,16 @@
 /* FAIXA / MARQUEE */
 @keyframes marquee-scroll { to { transform: translateX(-50%); } }
 
+/* ;] EM 3D — giro constante no eixo Y + flutuada de leve */
+@keyframes w3d-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes w3d-float {
+  0%, 100% { transform: translateY(-4%); }
+  50%      { transform: translateY(4%); }
+}
+
 /* SELOS GIRATÓRIOS */
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 /* Uma estrela de 8 pontas é simétrica a cada 45° — rotação pura "some" visualmente.
@@ -40,5 +50,9 @@
   .service-name, .cta-big { transition: none; }
   .project-image { transition: none; }
   .spin-badge svg, .title-star svg { animation: none; }
+  /* O ;] 3D para de girar, mas fica numa pose de 3/4 pra não perder o volume */
+  .wink3d { animation: none; }
+  .wink3d-stage { animation: none; transform: rotateY(-22deg); }
+  .wink3d-tilt { transition: none; }
   .click-ripple { animation: none; display: none; }
 }
