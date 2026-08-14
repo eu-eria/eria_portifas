@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Buena Hard Seltzer — lata 3D | Éria Alencar</title>
+<meta name="description" content="Lata The Buena Hard Seltzer em 3D — arraste para girar.">
+<style>
+  :root{
+    --ink:#0b0b0c;
+    --ink-2:#141315;
+    --orange:#c66a1e;
+    --orange-hi:#e8892e;
+    --bone:#efe7da;
+    --mute:rgba(239,231,218,.42);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--bone);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  #stage{position:fixed;inset:0;z-index:1}
+  canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+  canvas.dragging{cursor:grabbing}
+
+  .glow{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(58% 46% at 50% 62%, rgba(198,106,30,.22), rgba(198,106,30,0) 70%);
+  }
+  .hud{position:fixed;inset:0;pointer-events:none;z-index:2}
+  .hud > *{pointer-events:auto}
+
+  .wordmark{
+    position:absolute;top:clamp(14px,3vw,26px);left:clamp(14px,3vw,26px);
+    font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--mute);
+  }
+  .wordmark b{color:var(--bone);font-weight:600}
+  .wordmark i{
+    font-style:normal;display:block;margin-top:6px;letter-spacing:.18em;
+    font-size:9px;color:var(--orange-hi);
+  }
+
+  .hint{
+    position:absolute;left:50%;transform:translateX(-50%);
+    bottom:clamp(18px,5vw,34px);
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);
+    transition:opacity .5s ease;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hint span{display:block;width:26px;height:1px;background:var(--mute)}
+  .hint.gone{opacity:0}
+
+  .tools{
+    position:absolute;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);
+    display:flex;gap:8px;
+  }
+  .tools button{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(239,231,218,.18);
+    background:rgba(239,231,218,.04);
+    color:var(--bone);cursor:pointer;
+    display:grid;place-items:center;
+    transition:border-color .2s ease,background .2s ease,transform .2s ease;
+  }
+  .tools button:hover{border-color:var(--orange);background:rgba(198,106,30,.14)}
+  .tools button:active{transform:scale(.94)}
+  .tools button:focus-visible{outline:2px solid var(--orange-hi);outline-offset:2px}
+  .tools button[aria-pressed="true"]{
+    border-color:var(--orange);color:var(--orange-hi);background:rgba(198,106,30,.16)
+  }
+  .tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;
+    stroke-linecap:round;stroke-linejoin:round}
+
+  #loader{
+    position:fixed;inset:0;z-index:3;display:grid;place-items:center;background:var(--ink);
+    transition:opacity .6s ease;font-size:10px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--mute);
+  }
+  #loader.gone{opacity:0;pointer-events:none}
+  #loader .bar{margin-top:12px;width:120px;height:1px;background:rgba(239,231,218,.14);overflow:hidden}
+  #loader .bar i{display:block;height:100%;width:40%;background:var(--orange);
+    animation:slide 1.1s ease-in-out infinite}
+  @keyframes slide{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+
+  #fallback{position:fixed;inset:0;z-index:4;display:none;place-items:center;padding:24px;text-align:center}
+  #fallback img{max-width:min(92vw,560px);max-height:70vh;border-radius:4px}
+  #fallback p{margin-top:16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+
+  @media (prefers-reduced-motion: reduce){
+    #loader .bar i{animation:none;width:100%}
+  }
+  body.ui-off .hud,body.ui-off .glow{display:none}
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="scene"></canvas></div>
+<div class="glow"></div>
+
+<div class="hud">
+  <div class="wordmark"><b>The Buena</b> Hard Seltzer<i>Edição Especial · 355 ml</i></div>
+  <div class="hint" id="hint"><span></span>arraste para girar<span></span></div>
+  <div class="tools">
+    <button id="btnSpin" aria-pressed="true" title="Girar sozinho" aria-label="Girar sozinho">
+      <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4h-4"/></svg>
+    </button>
+    <button id="btnReset" title="Voltar à posição inicial" aria-label="Voltar à posição inicial">
+      <svg viewBox="0 0 24 24"><path d="M12 4v8l5 3"/><circle cx="12" cy="12" r="8"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="loader">montando a lata<div class="bar"><i></i></div></div>
+<div id="fallback"><div><img id="fallbackImg" alt="Rótulo The Buena Hard Seltzer"><p>Seu navegador não suporta 3D — rótulo plano acima</p></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // Textura do rotulo. Trocar aqui se mudar o caminho dos assets.
+  // Pode ser sobrescrita pela querystring: ?tex=caminho/arquivo.jpg
+  var TEX_DEFAULT = "assets/images/the-buena/the-buena-rotulo-3d.jpg";   // 2048x2048 (POT)
+  var FLAT = "assets/images/the-buena/the-buena-rotulo-plano.png";       // arte plana, proporcao real
+  var TEX = new URLSearchParams(location.search).get("tex") || TEX_DEFAULT;
+  document.getElementById("fallbackImg").src = FLAT;
+
+  var params = new URLSearchParams(location.search);
+  var qBg = params.get("bg");
+  var qUi = params.get("ui");
+  var qSpin = params.get("rotate");
+  if (qUi === "0") document.body.classList.add("ui-off");
+  if (qBg === "transparent") document.body.style.background = "transparent";
+  else if (qBg) document.body.style.background = qBg;
+
+  var prefersStill = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function fail() {
+    document.getElementById("loader").classList.add("gone");
+    document.getElementById("stage").style.display = "none";
+    document.getElementById("fallback").style.display = "grid";
+  }
+  if (typeof THREE === "undefined") { fail(); return; }
+
+  // ---------------------------------------------------------- medidas
+  var LABEL_W = 2390.44, LABEL_H = 1977.9;    // proporção real da arte (pt)
+  var R = 1;                                  // raio da lata
+  var H = (2 * Math.PI * R) / (LABEL_W / LABEL_H);   // altura proporcional
+
+  var canvasEl = document.getElementById("scene");
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvasEl, antialias: true, alpha: true,
+      powerPreference: "high-performance"
+    });
+  } catch (e) { fail(); return; }
+  if (!renderer || !renderer.getContext()) { fail(); return; }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.04;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.setClearColor(0x000000, 0);
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(20, 1, 0.5, 200);
+  var target = new THREE.Vector3(0, H * 0.47, 0);
+
+  // ---------------------------------------------------------- ambiente
+  function face(paint) {
+    var c = document.createElement("canvas");
+    c.width = 256; c.height = 256;
+    paint(c.getContext("2d"), 256);
+    return c;
+  }
+  function band(g, s, stops) {
+    var grd = g.createLinearGradient(0, 0, s, 0);
+    for (var i = 0; i < stops.length; i++) grd.addColorStop(stops[i][0], stops[i][1]);
+    g.fillStyle = grd; g.fillRect(0, 0, s, s);
+  }
+  var envFaces = [
+    face(function (g, s) {                       // +X  softbox estreita
+      band(g, s, [[0, "#0a0a0c"], [0.34, "#1b1b20"], [0.5, "#dfe6f2"],
+                  [0.66, "#1b1b20"], [1, "#0a0a0c"]]);
+    }),
+    face(function (g, s) {                       // -X  key larga e quente
+      band(g, s, [[0, "#101013"], [0.24, "#3a3a40"], [0.5, "#fff6e8"],
+                  [0.76, "#3a3a40"], [1, "#101013"]]);
+    }),
+    face(function (g, s) {                       // +Y  teto
+      var grd = g.createRadialGradient(s / 2, s / 2, 8, s / 2, s / 2, s * 0.72);
+      grd.addColorStop(0, "#ffffff"); grd.addColorStop(0.55, "#c9ccd4");
+      grd.addColorStop(1, "#42434a");
+      g.fillStyle = grd; g.fillRect(0, 0, s, s);
+    }),
+    face(function (g, s) { g.fillStyle = "#050506"; g.fillRect(0, 0, s, s); }), // -Y chão
+    face(function (g, s) {                       // +Z  frente
+      var grd = g.createLinearGradient(0, 0, 0, s);
+      grd.addColorStop(0, "#26262c"); grd.addColorStop(1, "#0a0a0c");
+      g.fillStyle = grd; g.fillRect(0, 0, s, s);
+    }),
+    face(function (g, s) {                       // -Z  contraluz âmbar
+      band(g, s, [[0, "#0a0a0c"], [0.4, "#241608"], [0.5, "#8a4a16"],
+                  [0.6, "#241608"], [1, "#0a0a0c"]]);
+    })
+  ];
+  var env = new THREE.CubeTexture(envFaces);
+  env.needsUpdate = true;
+  env.encoding = THREE.sRGBEncoding;
+  scene.environment = env;
+
+  // ---------------------------------------------------------- luzes
+  scene.add(new THREE.AmbientLight(0xffffff, 0.22));
+  var key = new THREE.DirectionalLight(0xfff1de, 1.45);
+  key.position.set(-6, 9.5, 6);
+  key.castShadow = true;
+  key.shadow.mapSize.width = 1024;
+  key.shadow.mapSize.height = 1024;
+  key.shadow.camera.near = 1;
+  key.shadow.camera.far = 48;
+  key.shadow.camera.left = -8;
+  key.shadow.camera.right = 8;
+  key.shadow.camera.top = 9;
+  key.shadow.camera.bottom = -8;
+  key.shadow.bias = -0.0012;
+  key.shadow.radius = 3;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(0xd2e0ff, 0.58);
+  fill.position.set(7, 3.5, 4);
+  scene.add(fill);
+  var rim = new THREE.DirectionalLight(0xffab5e, 0.85);
+  rim.position.set(0.5, 3, -8);
+  scene.add(rim);
+
+  // ---------------------------------------------------------- geometria
+  function lathe(pts, seg) {
+    var v = [];
+    for (var i = 0; i < pts.length; i++) v.push(new THREE.Vector2(pts[i][0], pts[i][1]));
+    return new THREE.LatheGeometry(v, seg || 160);
+  }
+
+  var bodyPts = [
+    [0.000, 0.118], [0.420, 0.104], [0.630, 0.074], [0.755, 0.032],
+    [0.812, 0.000], [0.882, 0.032], [0.948, 0.082], [0.987, 0.135],
+    [1.000, 0.196], [1.000, H * 0.900], [0.996, H * 0.918],
+    [0.970, H * 0.937], [0.920, H * 0.953], [0.856, H * 0.966],
+    [0.793, H * 0.976], [0.754, H * 0.985], [0.742, H * 0.993],
+    [0.742, H]
+  ];
+  var bodyGeo = lathe(bodyPts, 192);
+  // v da textura proporcional à altura real (e não ao índice do perfil)
+  var pos = bodyGeo.attributes.position, uv = bodyGeo.attributes.uv;
+  for (var i = 0; i < pos.count; i++) {
+    var y = pos.getY(i) / H;
+    uv.setY(i, Math.max(0, Math.min(1, y)));
+  }
+  uv.needsUpdate = true;
+
+  var lidPts = [
+    [0.000, H + 0.014], [0.470, H + 0.012], [0.590, H - 0.008],
+    [0.655, H - 0.010], [0.706, H + 0.022], [0.742, H + 0.032],
+    [0.757, H + 0.014], [0.746, H - 0.012]
+  ];
+  var lidGeo = lathe(lidPts, 160);
+
+  var can = new THREE.Group();
+  scene.add(can);
+
+  var metal = new THREE.MeshStandardMaterial({
+    color: 0xc4c7cd, metalness: 0.94, roughness: 0.30, envMap: env, envMapIntensity: 1.0
+  });
+  var lid = new THREE.Mesh(lidGeo, metal);
+  lid.castShadow = true;
+  can.add(lid);
+
+  var ring = new THREE.Mesh(
+    new THREE.TorusGeometry(0.195, 0.026, 10, 40),
+    new THREE.MeshStandardMaterial({ color: 0xd4d7dd, metalness: 0.95, roughness: 0.26, envMap: env })
+  );
+  ring.rotation.x = -Math.PI / 2;
+  ring.position.set(-0.14, H + 0.030, 0);
+  ring.castShadow = true;
+  can.add(ring);
+
+  var rivet = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.052, 0.052, 0.018, 20),
+    new THREE.MeshStandardMaterial({ color: 0x9ea2a8, metalness: 0.9, roughness: 0.4, envMap: env })
+  );
+  rivet.position.set(0.10, H + 0.016, 0);
+  can.add(rivet);
+
+  // ---------------------------------------------------------- chão
+  var floorTex = (function () {
+    var c = document.createElement("canvas");
+    c.width = c.height = 512;
+    var g = c.getContext("2d");
+    var grd = g.createRadialGradient(256, 256, 10, 256, 256, 250);
+    grd.addColorStop(0, "rgba(60,52,44,.85)");
+    grd.addColorStop(0.45, "rgba(30,26,24,.55)");
+    grd.addColorStop(1, "rgba(12,11,11,0)");
+    g.fillStyle = grd; g.fillRect(0, 0, 512, 512);
+    g.strokeStyle = "rgba(198,106,30,.34)";
+    g.lineWidth = 1.5;
+    g.beginPath(); g.arc(256, 256, 150, 0, Math.PI * 2); g.stroke();
+    g.strokeStyle = "rgba(232,137,46,.75)";
+    g.lineWidth = 3;
+    g.beginPath(); g.arc(256, 256, 150, -Math.PI / 2 - 0.10, -Math.PI / 2 + 0.10); g.stroke();
+    return new THREE.CanvasTexture(c);
+  })();
+  floorTex.encoding = THREE.sRGBEncoding;
+  var floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(11, 11),
+    new THREE.MeshBasicMaterial({ map: floorTex, transparent: true, depthWrite: false })
+  );
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = 0.002;
+  floor.renderOrder = 1;
+  scene.add(floor);
+
+  var catcher = new THREE.Mesh(
+    new THREE.PlaneGeometry(26, 26),
+    new THREE.ShadowMaterial({ opacity: 0.42 })
+  );
+  catcher.rotation.x = -Math.PI / 2;
+  catcher.position.y = 0.004;
+  catcher.receiveShadow = true;
+  catcher.material.depthWrite = false;
+  catcher.renderOrder = 2;
+  scene.add(catcher);
+
+  // ---------------------------------------------------------- rótulo
+  var body = null;
+  new THREE.TextureLoader().load(TEX, function (map) {
+    map.encoding = THREE.sRGBEncoding;
+    map.wrapS = THREE.RepeatWrapping;
+    map.wrapT = THREE.ClampToEdgeWrapping;
+    map.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    map.generateMipmaps = true;
+    map.minFilter = THREE.LinearMipmapLinearFilter;
+    // Ajuste fino do giro: a frente do rotulo fica em u = 0,5065.
+    // map.offset.x = 0.0065;   // descomente e inverta o sinal se precisar
+    var mat = new THREE.MeshStandardMaterial({
+      map: map, metalness: 0.20, roughness: 0.29,
+      envMap: env, envMapIntensity: 0.62
+    });
+    body = new THREE.Mesh(bodyGeo, mat);
+    body.castShadow = true;
+    can.add(body);
+    can.rotation.y = Math.PI;          // frente do rótulo para a câmera
+    document.getElementById("loader").classList.add("gone");
+  }, undefined, fail);
+
+  // ---------------------------------------------------------- órbita
+  var START = { theta: 0, phi: 1.395, dist: 21.5 };
+  var theta = START.theta, phi = START.phi, dist = START.dist;
+  var spin = !prefersStill && qSpin !== "0";
+  var idle = 0;
+  var dragging = false, lastX = 0, lastY = 0, pointers = {}, pinch = 0;
+
+  function place() {
+    var s = Math.sin(phi), c = Math.cos(phi);
+    camera.position.set(
+      target.x + dist * s * Math.sin(theta),
+      target.y + dist * c,
+      target.z + dist * s * Math.cos(theta)
+    );
+    camera.lookAt(target);
+  }
+
+  var hint = document.getElementById("hint");
+  function touched() {
+    idle = 0;
+    if (!hint.classList.contains("gone")) hint.classList.add("gone");
+  }
+
+  canvasEl.addEventListener("pointerdown", function (e) {
+    pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    canvasEl.classList.add("dragging");
+    canvasEl.setPointerCapture(e.pointerId);
+    touched();
+  });
+  canvasEl.addEventListener("pointermove", function (e) {
+    if (pointers[e.pointerId]) pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ids = Object.keys(pointers);
+    if (ids.length >= 2) {
+      var a = pointers[ids[0]], b = pointers[ids[1]];
+      var d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) { dist = Math.max(13, Math.min(34, dist * (pinch / d))); }
+      pinch = d; touched(); return;
+    }
+    if (!dragging) return;
+    theta -= (e.clientX - lastX) * 0.0072;
+    phi = Math.max(1.16, Math.min(1.63, phi - (e.clientY - lastY) * 0.0042));
+    lastX = e.clientX; lastY = e.clientY;
+    touched();
+  });
+  function release(e) {
+    delete pointers[e.pointerId];
+    if (Object.keys(pointers).length < 2) pinch = 0;
+    if (!Object.keys(pointers).length) {
+      dragging = false; canvasEl.classList.remove("dragging");
+    }
+  }
+  canvasEl.addEventListener("pointerup", release);
+  canvasEl.addEventListener("pointercancel", release);
+  canvasEl.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    dist = Math.max(13, Math.min(34, dist * (1 + e.deltaY * 0.0012)));
+    touched();
+  }, { passive: false });
+
+  var btnSpin = document.getElementById("btnSpin");
+  btnSpin.setAttribute("aria-pressed", spin ? "true" : "false");
+  btnSpin.addEventListener("click", function () {
+    spin = !spin;
+    btnSpin.setAttribute("aria-pressed", spin ? "true" : "false");
+    touched();
+  });
+  document.getElementById("btnReset").addEventListener("click", function () {
+    theta = START.theta; phi = START.phi; dist = START.dist; touched();
+  });
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { theta += 0.09; touched(); }
+    if (e.key === "ArrowRight") { theta -= 0.09; touched(); }
+  });
+
+  // ---------------------------------------------------------- loop
+  function resize() {
+    var w = canvasEl.clientWidth || window.innerWidth;
+    var h = canvasEl.clientHeight || window.innerHeight;
+    if (renderer.domElement.width !== Math.floor(w * renderer.getPixelRatio()) ||
+        renderer.domElement.height !== Math.floor(h * renderer.getPixelRatio())) {
+      renderer.setSize(w, h, false);
+      camera.aspect = w / Math.max(1, h);
+      camera.updateProjectionMatrix();
+    }
+  }
+  function frame() {
+    resize();
+    if (spin && !dragging) {
+      idle += 1;
+      if (idle > 100) theta -= 0.0021;
+    }
+    place();
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  place();
+  frame();
+  setTimeout(function () {
+    document.getElementById("loader").classList.add("gone");
+  }, 6000);
+})();
+</script>
+</body>
+</html>
